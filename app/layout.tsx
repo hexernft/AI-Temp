@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "WhatsApp AI Platform",
+  title: "WelCare",
   description:
-    "Business dashboard for WhatsApp AI assistants, conversations, leads, staff, and automation.",
+    "Church first timer capture, follow-up, foundation school, baptism, and growth tracking system.",
 };
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="light">
       <body>{children}</body>
     </html>
   );

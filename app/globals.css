@@ -1,66 +1,43 @@
 @import "tailwindcss";
 
-:root {
-  --background: #07070b;
-  --foreground: #f7f5ff;
+:root,
+html[data-theme="light"] {
+  --font-official: "Aptos", "Aptos Display", "Segoe UI Variable", "Segoe UI", "Manrope", Arial, Helvetica, sans-serif;
+  --font-heading: "Aptos Display", "Aptos", "Segoe UI Variable", "Segoe UI", "Manrope", Arial, Helvetica, sans-serif;
+  --font-inter: var(--font-official);
+  --font-manrope: var(--font-official);
 
-  --page-bg:
-    radial-gradient(circle at 13% 12%, rgba(126, 76, 255, 0.20), transparent 17rem),
-    radial-gradient(circle at 82% 8%, rgba(176, 65, 255, 0.13), transparent 19rem),
-    radial-gradient(circle at 52% 92%, rgba(36, 30, 76, 0.28), transparent 22rem),
-    linear-gradient(180deg, #07070b 0%, #09090f 48%, #07070b 100%);
-
-  --surface: #0b0b11;
-  --surface-soft: #101018;
-  --surface-muted: #151521;
-  --surface-glass: rgba(11, 11, 17, 0.86);
-  --surface-glass-strong: rgba(9, 9, 15, 0.96);
-  --surface-blue: #10111f;
-  --surface-purple: #151026;
-  --surface-accent: #12101d;
-
-  --text-main: #f7f5ff;
-  --text-soft: #c4bdd7;
-  --text-muted: #8d88a3;
-  --text-faint: #5e5870;
-  --text-invert: #ffffff;
-
-  --primary: #8b4dff;
-  --primary-strong: #a36cff;
-  --primary-soft: rgba(139, 77, 255, 0.15);
-  --purple: #b44cff;
-  --purple-strong: #c96bff;
-  --purple-soft: rgba(180, 76, 255, 0.14);
-  --pink: #dc4fff;
-  --pink-soft: rgba(220, 79, 255, 0.12);
-
-  --cyan: #57a8ff;
-  --cyan-soft: rgba(87, 168, 255, 0.10);
-  --green: #45e6ad;
-  --green-soft: rgba(69, 230, 173, 0.10);
-  --orange: #ff934d;
-  --orange-soft: rgba(255, 147, 77, 0.12);
-  --danger: #ff5d7f;
-  --danger-soft: rgba(255, 93, 127, 0.13);
-
-  --border-soft: rgba(255, 255, 255, 0.075);
-  --border-strong: rgba(255, 255, 255, 0.14);
-  --ring-blue: rgba(139, 77, 255, 0.23);
-
-  --shadow-soft: 0 14px 32px rgba(0, 0, 0, 0.28);
-  --shadow-card: 0 18px 46px rgba(0, 0, 0, 0.40);
-  --shadow-float: 0 30px 82px rgba(0, 0, 0, 0.50);
-  --shadow-blue: 0 16px 40px rgba(139, 77, 255, 0.26);
-  --shadow-purple: 0 16px 40px rgba(180, 76, 255, 0.22);
-
-  --input-bg: #101018;
-  --input-text: #f7f5ff;
-  --input-placeholder: #746f88;
-
-  --radius-card: .78rem;
-  --radius-panel: .92rem;
-  --radius-control: .38rem;
-  --radius-chip: .34rem;
+  --brand-ink: #111312;
+  --brand-green: #123d34;
+  --brand-green-2: #174a3f;
+  --brand-green-soft: #dfe9e4;
+  --brand-lime: #c8f84a;
+  --brand-lime-2: #b6ef3f;
+  --page-bg: #f3f4f1;
+  --surface-bg: #ffffff;
+  --surface-bg-soft: #f8f9f6;
+  --surface-bg-strong: #ffffff;
+  --card-bg: #ffffff;
+  --card-bg-soft: #ffffff;
+  --card-bg-strong: #ffffff;
+  --topbar-bg: rgba(255, 255, 255, 0.92);
+  --sidebar-bg: #123d34;
+  --border-soft: rgba(17, 19, 18, 0.09);
+  --border-strong: rgba(17, 19, 18, 0.16);
+  --text-main: #111312;
+  --text-soft: #3f4742;
+  --text-muted: #747b75;
+  --text-faint: #9aa09a;
+  --input-bg: #ffffff;
+  --input-text: #111312;
+  --input-placeholder: #9aa09a;
+  --accent-a: #123d34;
+  --accent-b: #c8f84a;
+  --accent-c: #b6ef3f;
+  --background: var(--page-bg);
+  --foreground: var(--text-main);
+  --whatsapp: #25d366;
+  color-scheme: light;
 }
 
 * { box-sizing: border-box; }
@@ -68,1438 +45,740 @@
 html {
   scroll-behavior: smooth;
   font-size: 12.5px;
-  color-scheme: dark;
+  background: var(--page-bg);
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--page-bg);
+  background: var(--page-bg) !important;
   color: var(--text-main);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-official);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 12% 16%, rgba(125, 92, 255, 0.13), transparent 15rem),
-    radial-gradient(circle at 87% 14%, rgba(226, 75, 255, 0.08), transparent 17rem),
-    radial-gradient(circle at 72% 84%, rgba(85, 179, 255, 0.04), transparent 19rem);
-}
-
-button, input, select, textarea { font-family: inherit; }
+button,
+input,
+select,
+textarea { font-family: inherit; }
 button { cursor: pointer; }
-button:disabled { cursor: not-allowed; opacity: .65; }
+button:disabled { cursor: not-allowed; }
 a { color: inherit; text-decoration: none; }
-input, select, textarea { font-size: 0.94rem; }
+input, select, textarea { font-size: 0.95rem; }
 
 h1, h2, h3, h4, h5, h6, .font-display {
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  letter-spacing: -0.045em;
+  font-family: var(--font-heading);
+  letter-spacing: -0.035em;
 }
 
-::selection { background: var(--primary); color: white; }
+::selection { background: var(--brand-lime); color: var(--brand-ink); }
 
-.brand-mark {
-  display: inline-grid;
-  place-items: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 0.55rem;
-  background:
-    radial-gradient(circle at 28% 22%, rgba(255, 255, 255, .22), transparent 30%),
-    linear-gradient(145deg, var(--primary), var(--purple) 68%, var(--pink));
-  color: white;
-  font-weight: 950;
-  line-height: 1;
-  box-shadow: var(--shadow-blue), inset 0 1px 0 rgba(255,255,255,.18);
-}
-.brand-mark::before { content: "W"; transform: translateY(-.02rem); }
-
-.app-shell, .premium-page {
-  min-height: 100vh;
-  background: var(--page-bg);
-  color: var(--text-main);
-}
-
-.app-content { min-height: 100vh; }
-
-.app-sidebar {
-  border-right: 1px solid var(--border-soft);
-  background:
-    radial-gradient(circle at 16% 7%, rgba(125, 92, 255, 0.13), transparent 18rem),
-    radial-gradient(circle at 94% 12%, rgba(226, 75, 255, 0.09), transparent 18rem),
-    var(--surface-glass-strong);
-  box-shadow: 22px 0 60px rgba(0, 0, 0, 0.28);
-  backdrop-filter: blur(24px) saturate(135%);
-}
-
-.app-topbar {
-  border-bottom: 1px solid var(--border-soft);
-  background: rgba(10, 12, 19, 0.88);
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.20);
-  backdrop-filter: blur(22px) saturate(135%);
-}
-
-.brand-card {
-  border-radius: 0.95rem;
-  padding: .5rem;
-  transition: background .18s ease, transform .18s ease, box-shadow .18s ease;
-}
-.brand-card:hover {
-  background: rgba(125, 92, 255, 0.08);
-  transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(125, 92, 255, 0.12);
-}
-
-.sidebar-progress {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: .4rem;
-}
-.sidebar-progress span {
-  height: .16rem;
-  border-radius: 999px;
-  background: rgba(255,255,255,.09);
-}
-.sidebar-progress span:nth-child(-n + 4) {
-  background: linear-gradient(90deg, var(--primary), var(--purple), var(--pink));
-  box-shadow: 0 0 16px rgba(125, 92, 255, .22);
-}
-
-.sidebar-link {
-  display: flex;
-  align-items: center;
-  gap: .7rem;
-  border: 1px solid transparent;
-  border-radius: .62rem;
-  padding: .55rem .62rem;
-  color: var(--text-soft);
-  font-size: .76rem;
-  font-weight: 650;
-  transition: background .16s ease, color .16s ease, transform .16s ease, border-color .16s ease, box-shadow .16s ease;
-}
-.sidebar-link:hover {
-  transform: translateX(2px);
-  background: var(--surface-accent);
-  color: white;
-  border-color: rgba(125, 92, 255, .18);
-}
-.sidebar-link-active {
-  color: white !important;
-  border-color: rgba(255,255,255,.10);
-  background:
-    linear-gradient(135deg, rgba(125, 92, 255, 0.22), rgba(180, 82, 255, 0.14)),
-    rgba(18, 14, 34, 0.92) !important;
-  box-shadow: inset 0 0 0 1px rgba(125,92,255,.28), var(--shadow-blue);
-}
-.sidebar-link-active * { color: white !important; }
-.sidebar-link-icon {
-  display: flex;
-  width: 1.75rem;
-  height: 1.75rem;
-  align-items: center;
-  justify-content: center;
-  border-radius: .55rem;
-  background: rgba(255,255,255,.05);
-  color: currentColor;
-  font-size: .74rem;
-  font-weight: 950;
-}
-.sidebar-link-active .sidebar-link-icon {
-  background: linear-gradient(135deg, rgba(125,92,255,.34), rgba(180,82,255,.22));
-}
-
-.top-search, .topbar-button, .topbar-button-danger, .mobile-nav-chip, .action-link-primary, .action-link-secondary, .theme-toggle-btn {
-  border: 1px solid var(--border-soft);
-  background: var(--surface-glass);
-  color: var(--text-main);
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255,255,255,.03);
-  backdrop-filter: blur(14px);
-}
-
-.topbar-button, .topbar-button-danger, .action-link-primary, .action-link-secondary, .theme-toggle-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-control);
-  padding: .46rem .66rem;
-  font-size: .7rem;
-  font-weight: 750;
-  min-height: 1.9rem;
-  transition: transform .15s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease;
-}
-.topbar-button:hover, .action-link-secondary:hover, .theme-toggle-btn:hover {
-  transform: translateY(-1px);
-  background: rgba(255,255,255,.04);
-  border-color: rgba(125, 92, 255, .22);
-}
-.action-link-primary {
-  color: white !important;
-  background: linear-gradient(135deg, var(--primary), var(--purple) 78%, var(--pink)) !important;
-  border-color: rgba(255,255,255,.12) !important;
-  box-shadow: var(--shadow-blue), inset 0 1px 0 rgba(255,255,255,.10) !important;
-}
-.action-link-primary:hover { transform: translateY(-1px); }
-.action-link-secondary {
-  background: var(--surface-soft);
-  color: var(--text-main) !important;
-}
-.topbar-button-danger {
-  color: var(--danger) !important;
-  background: rgba(255, 93, 127, 0.08) !important;
-  border-color: rgba(255, 93, 127, .18) !important;
-}
-
-.mobile-nav-chip {
-  white-space: nowrap;
-  border-radius: var(--radius-chip);
-  padding: .5rem .72rem;
-  font-size: .72rem;
-  font-weight: 800;
-  color: var(--text-soft);
-}
-.mobile-nav-chip-active {
-  color: white !important;
-  border-color: rgba(255,255,255,.12) !important;
-  background: linear-gradient(135deg, rgba(125, 92, 255, 0.28), rgba(180, 82, 255, 0.22)) !important;
-  box-shadow: var(--shadow-blue) !important;
-}
-
-.input-compact, input:not(.bg-transparent), select, textarea {
-  width: 100%;
-  border-radius: .65rem !important;
-  border: 1px solid var(--border-strong) !important;
-  background: var(--input-bg) !important;
-  padding: .64rem .76rem;
-  color: var(--input-text) !important;
-  outline: none;
-  transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
-}
-.input-compact::placeholder, input::placeholder, textarea::placeholder { color: var(--input-placeholder) !important; }
-.input-compact:focus, input:focus, select:focus, textarea:focus {
-  border-color: rgba(125, 92, 255, .74) !important;
-  background: rgba(20, 25, 37, 1) !important;
-  box-shadow: 0 0 0 4px var(--ring-blue), 0 16px 40px rgba(125,92,255,.12) !important;
-}
-
-.dark-card, .dark-card-soft, .smart-card, .premium-card {
-  position: relative;
-  color: var(--text-main);
-  border: 1px solid var(--border-soft) !important;
-  background: var(--surface-glass-strong) !important;
-  box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255,255,255,.03) !important;
-  backdrop-filter: blur(22px) saturate(135%);
-}
-.dark-card-soft { background: var(--surface-glass) !important; }
-
-.glow-border { position: relative; isolation: isolate; }
-.glow-border::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  z-index: -1;
-  border-radius: inherit;
-  background: linear-gradient(135deg, rgba(125,92,255,.46), rgba(125,92,255,.08), rgba(226,75,255,.22));
-  opacity: .95;
-}
-.glow-border > * { position: relative; z-index: 1; }
-
-.mobile-ui-stage {
-  min-height: 100vh;
-  background: var(--page-bg);
-  padding: clamp(1rem, 3vw, 2.4rem);
-}
-
-.mobile-ui-card {
-  overflow: hidden;
-  border-radius: .95rem;
-  border: 1px solid var(--border-soft);
-  background: var(--surface-glass-strong);
-  box-shadow: var(--shadow-float), inset 0 1px 0 rgba(255,255,255,.03);
-  backdrop-filter: blur(22px) saturate(135%);
-}
-
-.mobile-ui-hero {
-  position: relative;
-  overflow: hidden;
-  color: white;
-  background:
-    radial-gradient(circle at 18% 8%, rgba(255,255,255,.10), transparent 4rem),
-    radial-gradient(circle at 88% 7%, rgba(255,255,255,.08), transparent 6rem),
-    linear-gradient(135deg, #1c1631 0%, #13141f 35%, #1b1235 100%);
-}
-.mobile-ui-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 16% 14%, rgba(125,92,255,.24) 0 4rem, transparent 4.1rem),
-    radial-gradient(circle at 82% 0%, rgba(180,82,255,.17) 0 5rem, transparent 5.1rem),
-    linear-gradient(120deg, transparent 0 58%, rgba(255,255,255,.06) 58.2%, transparent 58.8%);
-  pointer-events: none;
-}
-.mobile-ui-hero > * { position: relative; z-index: 1; }
-
-.mobile-task-card {
-  border-radius: .82rem;
-  border: 1px solid var(--border-soft);
-  background: rgba(19, 24, 37, 0.96);
-  box-shadow: 0 14px 34px rgba(0, 0, 0, .22);
-}
-
-.mobile-avatar {
-  display: grid;
-  place-items: center;
-  border-radius: .75rem;
-  background: linear-gradient(135deg, rgba(125,92,255,.28), rgba(180,82,255,.18));
-  color: white;
-  font-weight: 950;
-}
-
-.mock-device {
-  position: relative;
-  overflow: hidden;
-  border-radius: 1rem;
-  border: 1px solid var(--border-soft);
-  background: var(--surface-glass-strong);
-  box-shadow: var(--shadow-float), inset 0 1px 0 rgba(255,255,255,.04);
-}
-
-.premium-orb {
-  position: absolute;
-  width: .5rem;
-  height: .5rem;
-  border-radius: 999px;
-  background: currentColor;
-  box-shadow: 0 0 22px currentColor;
-}
-
-.premium-pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: .55rem;
-  background: rgba(255,255,255,.04);
-  color: var(--text-main);
-  padding: .38rem .72rem;
-  font-size: .72rem;
-  font-weight: 800;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, .16);
-}
-
-.premium-step-rail {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: .42rem;
-}
-.premium-step-rail span {
-  height: .18rem;
-  border-radius: 999px;
-  background: rgba(255,255,255,.10);
-}
-.premium-step-rail span:nth-child(-n + 4) {
-  background: linear-gradient(90deg, var(--primary), var(--purple), var(--pink));
-  box-shadow: 0 0 18px rgba(125,92,255,.24);
-}
-
-.premium-metric-bar {
-  height: .30rem;
-  border-radius: 999px;
-  background: rgba(255,255,255,.08);
-  overflow: hidden;
-}
-.premium-metric-bar span {
-  display: block;
-  height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(90deg, var(--primary), var(--purple), var(--pink));
-}
-
-.status-badge {
-  display: inline-flex;
-  align-items: center;
-  border-radius: .45rem;
-  border: 1px solid currentColor;
-  padding: .24rem .48rem;
-  font-size: .64rem;
-  font-weight: 800;
-  line-height: 1;
-}
-.status-badge-blue { color: var(--primary-strong); background: var(--primary-soft); }
-.status-badge-emerald { color: var(--green); background: var(--green-soft); }
-.status-badge-violet { color: var(--purple-strong); background: var(--purple-soft); }
-.status-badge-cyan { color: var(--cyan); background: var(--cyan-soft); }
-.status-badge-amber { color: var(--orange); background: var(--orange-soft); }
-.status-badge-red { color: var(--danger); background: var(--danger-soft); }
-.status-badge-slate { color: var(--text-soft); background: rgba(255,255,255,.05); }
-
-:is(.bg-white, .bg-slate-50, .bg-slate-100, .bg-slate-950, .bg-black, .bg-\[\#f7f3ea\], .bg-\[\#172033\]) {
-  background-color: var(--surface-glass-strong) !important;
-}
-:is(.border-slate-200, .border-slate-100, .border-black\/10, .border-black\/5, .border-white\/10, .border-white\/20) {
-  border-color: var(--border-soft) !important;
-}
-:is(.text-slate-950, .text-slate-900, .text-slate-800, .text-black, .text-white, .text-\[\#172033\]) {
-  color: var(--text-main) !important;
-}
-:is(.text-slate-700, .text-slate-600, .text-slate-300, .text-\[\#4b5563\]) {
-  color: var(--text-soft) !important;
-}
-:is(.text-slate-500, .text-slate-400, .text-slate-600\/70, .text-\[\#6b7280\]) {
-  color: var(--text-muted) !important;
-}
-:is(.shadow, .shadow-sm, .shadow-xl, .shadow-lg, .shadow-2xl) {
-  box-shadow: var(--shadow-card) !important;
-}
-:is(.divide-slate-100, .divide-black\/10, .divide-white\/10) > :not([hidden]) ~ :not([hidden]) {
-  border-color: var(--border-soft) !important;
-}
-:is(.rounded-2xl, .rounded-3xl, .rounded-\[28px\], .rounded-\[1\.7rem\], .rounded-\[2rem\]) {
-  border-radius: .82rem !important;
-}
-
-:is(.action-link-primary, .sidebar-link-active, .mobile-nav-chip-active, button[type="submit"], .bg-emerald-500, .bg-sky-500, .bg-purple-500, .bg-blue-600, .bg-indigo-600) {
-  color: white !important;
-  background: linear-gradient(135deg, var(--primary), var(--purple) 76%, var(--pink)) !important;
-  border-color: rgba(255,255,255,.12) !important;
-  box-shadow: var(--shadow-blue) !important;
-}
-:is(.action-link-primary, .sidebar-link-active, .mobile-nav-chip-active, button[type="submit"], .bg-emerald-500, .bg-sky-500, .bg-purple-500, .bg-blue-600, .bg-indigo-600) * {
-  color: white !important;
-}
-
-form,
-section.rounded-2xl,
-section.rounded-3xl,
-section.rounded-\[2rem\],
-div.rounded-2xl,
-div.rounded-3xl,
-div.rounded-\[2rem\] {
-  border-color: var(--border-soft) !important;
-  box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255,255,255,.03) !important;
-  backdrop-filter: blur(18px) saturate(135%);
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-::-webkit-scrollbar-track {
-  background: rgba(255,255,255,.03);
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(125, 92, 255, 0.42);
-  border-radius: 999px;
-  border: 3px solid rgba(7, 8, 13, 0.96);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(180, 82, 255, 0.55);
-}
-
-@media (max-width: 768px) {
-  html { font-size: 12px; }
-  body { background: #090b12; }
-}
-
-
-button,
-button[class],
-input[type="button"],
-input[type="submit"],
-input[type="reset"] {
-  border-radius: var(--radius-control) !important;
-}
-
-.top-search {
-  border-radius: .75rem;
-  padding: .55rem .8rem;
-}
-
-th {
-  color: var(--text-soft);
-}
-
-td {
-  color: var(--text-main);
-}
-
-/* Final dark premium polish */
-.dashboard-polish-card,
-.dark-card,
-.dark-card-soft,
-.smart-card,
-.premium-card,
-.mobile-task-card,
-.mobile-ui-card {
-  background:
-    radial-gradient(circle at 18% 0%, rgba(125, 92, 255, 0.035), transparent 12rem),
-    var(--surface-glass-strong) !important;
-}
-
-.app-content main {
-  background:
-    radial-gradient(circle at 8% 0%, rgba(125, 92, 255, 0.055), transparent 18rem),
-    radial-gradient(circle at 92% 0%, rgba(180, 82, 255, 0.045), transparent 18rem);
-}
-
-.sidebar-link,
-.topbar-button,
-.topbar-button-danger,
-.action-link-primary,
-.action-link-secondary,
-.theme-toggle-btn,
-.mobile-nav-chip,
-.status-badge {
-  letter-spacing: -0.01em;
-}
-
-.sidebar-link-active {
-  background:
-    linear-gradient(135deg, rgba(125, 92, 255, 0.28), rgba(180, 82, 255, 0.20)),
-    rgba(20, 15, 39, 0.92) !important;
-}
-
-:is(.p-8, .p-7, .p-6) {
-  padding: clamp(1.15rem, 1.8vw, 1.65rem) !important;
-}
-
-:is(.gap-8, .gap-7, .gap-6) {
-  gap: clamp(1rem, 1.6vw, 1.35rem) !important;
-}
-
-:is(.rounded-full) {
-  border-radius: .48rem !important;
-}
-
-.brand-mark,
-.sidebar-link-icon,
-.mobile-avatar {
-  border-radius: .55rem !important;
-}
-
-button svg,
-a svg {
-  width: 1rem;
-  height: 1rem;
-}
-
-
-/* --------------------------------------------------------------------------
-   APP-WIDE DARK PREMIUM ENFORCEMENT
-   This section intentionally overrides page-level Tailwind colors so every
-   route inherits the same dark/purple design language.
--------------------------------------------------------------------------- */
-
-html,
-body,
-#__next {
+/* -------------------------------------------------------
+   Regular light theme inspired by the supplied Waykesi palette.
+   No dark mode, no page gradients, calm official surfaces.
+------------------------------------------------------- */
+.app-shell,
+.app-content,
+main {
   background: var(--page-bg) !important;
   color: var(--text-main) !important;
 }
 
-/* Page wrappers */
-main,
-.app-shell,
-.premium-page,
-.mobile-ui-stage,
-[class*="min-h-screen"],
-[class*="bg-[#"],
-[class*="bg-slate"],
-[class*="bg-white"],
-[class*="bg-black"] {
-  color: var(--text-main);
-}
-
-/* Kill light surfaces anywhere in the app */
-.bg-white,
-.bg-slate-50,
-.bg-slate-100,
-.bg-slate-200,
-.bg-gray-50,
-.bg-gray-100,
-.bg-zinc-50,
-.bg-zinc-100,
-.bg-stone-50,
-.bg-neutral-50,
-.bg-black,
-.bg-slate-950,
-.bg-\[\#f7f3ea\],
-.bg-\[\#f8fafc\],
-.bg-\[\#ffffff\],
-.bg-\[\#fff\],
-.bg-\[\#172033\],
-.bg-\[\#0f172a\] {
-  background:
-    radial-gradient(circle at 18% 0%, rgba(125, 92, 255, 0.035), transparent 12rem),
-    var(--surface-glass-strong) !important;
-  color: var(--text-main) !important;
-}
-
-/* Panels/cards regardless of route */
-.card,
-.panel,
-form,
-fieldset,
-table,
-thead,
-tbody,
-section,
-article,
-aside,
-[class*="rounded-"],
-[class*="shadow"] {
-  border-color: var(--border-soft) !important;
-}
-
-/* Make common card-like blocks actually dark */
-section[class*="border"],
-article[class*="border"],
-div[class*="border"][class*="rounded"],
-form[class*="border"],
-table[class*="border"],
-div[class*="shadow"][class*="rounded"] {
-  background:
-    radial-gradient(circle at 18% 0%, rgba(125, 92, 255, 0.04), transparent 13rem),
-    var(--surface-glass-strong) !important;
-  border-color: var(--border-soft) !important;
-  color: var(--text-main) !important;
-  box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255,255,255,.03) !important;
-  backdrop-filter: blur(18px) saturate(135%);
-}
-
-/* Text normalization */
-.text-black,
-.text-white,
-.text-slate-950,
-.text-slate-900,
-.text-slate-800,
-.text-gray-950,
-.text-gray-900,
-.text-zinc-950,
-.text-zinc-900,
-.text-neutral-950,
-.text-neutral-900,
-.text-\[\#111827\],
-.text-\[\#172033\],
-.text-\[\#0f172a\] {
-  color: var(--text-main) !important;
-}
-
-.text-slate-700,
-.text-slate-600,
-.text-gray-700,
-.text-gray-600,
-.text-zinc-700,
-.text-zinc-600,
-.text-neutral-700,
-.text-neutral-600,
-.text-\[\#4b5563\] {
-  color: var(--text-soft) !important;
-}
-
-.text-slate-500,
-.text-slate-400,
-.text-gray-500,
-.text-gray-400,
-.text-zinc-500,
-.text-zinc-400,
-.text-neutral-500,
-.text-neutral-400,
-.text-\[\#6b7280\] {
-  color: var(--text-muted) !important;
-}
-
-/* Borders/dividers */
-.border,
-.border-slate-50,
-.border-slate-100,
-.border-slate-200,
-.border-slate-300,
-.border-gray-100,
-.border-gray-200,
-.border-zinc-100,
-.border-zinc-200,
-.border-black\/5,
-.border-black\/10,
-.border-white\/10,
-.border-white\/20 {
-  border-color: var(--border-soft) !important;
-}
-
-.divide-slate-100 > :not([hidden]) ~ :not([hidden]),
-.divide-slate-200 > :not([hidden]) ~ :not([hidden]),
-.divide-gray-100 > :not([hidden]) ~ :not([hidden]),
-.divide-gray-200 > :not([hidden]) ~ :not([hidden]),
-.divide-black\/10 > :not([hidden]) ~ :not([hidden]),
-.divide-white\/10 > :not([hidden]) ~ :not([hidden]) {
-  border-color: var(--border-soft) !important;
-}
-
-/* Inputs/selects/textareas */
-input,
-select,
-textarea {
-  background: var(--input-bg) !important;
-  color: var(--input-text) !important;
-  border-color: var(--border-strong) !important;
-  border-radius: var(--radius-control) !important;
-}
-
-input::placeholder,
-textarea::placeholder {
-  color: var(--input-placeholder) !important;
-}
-
-/* Tables */
-table {
-  background: var(--surface-glass-strong) !important;
-  color: var(--text-main) !important;
-}
-
-thead,
-thead tr,
-tr[class*="bg-slate"],
-tr[class*="bg-gray"] {
-  background: rgba(255,255,255,.035) !important;
-}
-
-tbody tr:hover {
-  background: rgba(125, 92, 255, 0.06) !important;
-}
-
-/* Buttons and links: smaller, sharper, premium */
-button,
-a[class*="button"],
-a[class*="btn"],
-[role="button"],
-input[type="button"],
-input[type="submit"],
-input[type="reset"] {
-  border-radius: var(--radius-control) !important;
-}
-
-button:not(.sidebar-link):not(.mobile-nav-chip),
-a.action-link-primary,
-a.action-link-secondary,
-.topbar-button,
-.topbar-button-danger {
-  min-height: 1.9rem;
-  padding-top: .46rem;
-  padding-bottom: .46rem;
-}
-
-/* High-color actions */
-.bg-blue-500,
-.bg-blue-600,
-.bg-indigo-500,
-.bg-indigo-600,
-.bg-purple-500,
-.bg-purple-600,
-.bg-fuchsia-500,
-.bg-fuchsia-600,
-.bg-emerald-500,
-.bg-emerald-600,
-button[type="submit"],
-.action-link-primary {
-  background: linear-gradient(135deg, var(--primary), var(--purple) 76%, var(--pink)) !important;
-  color: white !important;
-  border-color: rgba(255,255,255,.12) !important;
-  box-shadow: var(--shadow-blue) !important;
-}
-
-/* Remove excessive pill look globally except tiny status dots */
-.rounded-full:not(.h-1):not(.h-1\.5):not(.h-2):not(.w-1):not(.w-1\.5):not(.w-2) {
-  border-radius: .48rem !important;
-}
-
-/* Page hero/header consistency */
-.dashboard-hero,
-[class*="DashboardPageShell"],
-header[class*="rounded"],
-section[class*="from-"] {
-  background:
-    radial-gradient(circle at 82% 10%, rgba(125, 92, 255, .12), transparent 18rem),
-    linear-gradient(135deg, rgba(8, 11, 18, .98), rgba(12, 15, 25, .96)) !important;
-  border-color: var(--border-soft) !important;
-}
-
-/* Lucide/icon boxes */
-svg {
-  stroke-width: 1.7;
-}
-
-/* Make all page scrollbars subtle */
-* {
-  scrollbar-color: rgba(125, 92, 255, 0.36) rgba(255,255,255,0.03);
-}
-
-
-/* --------------------------------------------------------------------------
-   REFERENCE DARK FINAL PASS
-   Removes the remaining green cast and forces the black/purple reference look.
--------------------------------------------------------------------------- */
-
-body,
-.app-shell,
-.app-content,
-.premium-page,
-main,
-[class*="min-h-screen"] {
-  background:
-    radial-gradient(circle at 10% 8%, rgba(139, 77, 255, .16), transparent 18rem),
-    radial-gradient(circle at 86% 6%, rgba(180, 76, 255, .10), transparent 19rem),
-    linear-gradient(180deg, #07070b 0%, #09090f 52%, #07070b 100%) !important;
-  color: var(--text-main) !important;
-}
-
-/* remove old green/teal cast from dashboard content columns */
-[class*="bg-"][class*="001"],
-.bg-\[\#07070b\],
-.bg-\[\#07070b\],
-.bg-\[\#07070b\],
-.bg-\[\#07070b\],
-.bg-\[\#09090f\],
-.bg-\[\#09090f\],
-.bg-\[\#09090f\] {
-  background: #07070b !important;
-}
-
-/* sidebar should be black/purple, not green */
-.app-sidebar,
-aside.app-sidebar,
-aside[class*="app-sidebar"],
-aside[class*="border"] {
-  background:
-    radial-gradient(circle at 22% 3%, rgba(139, 77, 255, .22), transparent 12rem),
-    radial-gradient(circle at 82% 42%, rgba(180, 76, 255, .08), transparent 16rem),
-    linear-gradient(180deg, rgba(15, 12, 28, .98), rgba(9, 9, 15, .98)) !important;
-  border-color: var(--border-soft) !important;
-}
-
-/* topbar/header and page hero */
-.app-topbar,
-header[class*="border"],
-section[class*="rounded"][class*="border"]:first-child {
-  background:
-    radial-gradient(circle at 88% 16%, rgba(139, 77, 255, .12), transparent 16rem),
-    linear-gradient(135deg, rgba(9, 9, 15, .98), rgba(12, 10, 22, .96)) !important;
-  border-color: var(--border-soft) !important;
-}
-
-/* cards: tighter, darker, less green */
-section[class*="rounded"][class*="border"],
-article[class*="rounded"][class*="border"],
-div[class*="rounded"][class*="border"],
-form[class*="rounded"],
-.dark-card,
-.dark-card-soft,
-.smart-card,
-.premium-card,
-.mobile-ui-card,
-.mobile-task-card {
-  background:
-    radial-gradient(circle at 14% 0%, rgba(139, 77, 255, .045), transparent 11rem),
-    linear-gradient(180deg, rgba(11, 11, 17, .98), rgba(8, 9, 15, .98)) !important;
-  border-color: rgba(255,255,255,.075) !important;
-  box-shadow: 0 18px 44px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.025) !important;
-}
-
-/* smaller card paddings app-wide */
-:is(.p-10, .p-9, .p-8, .p-7, .p-6, .p-5) {
-  padding: clamp(1rem, 1.55vw, 1.35rem) !important;
-}
-
-/* smaller dashboard gaps */
-:is(.gap-10, .gap-9, .gap-8, .gap-7, .gap-6) {
-  gap: clamp(.85rem, 1.35vw, 1.12rem) !important;
-}
-
-/* reduce giant card height caused by old padding/spacing */
-.grid > a[class*="rounded"],
-.grid > div[class*="rounded"],
-.grid > section[class*="rounded"] {
-  min-height: unset !important;
-}
-
-/* sidebar typography lighter and tighter */
-.sidebar-link {
-  padding: .52rem .58rem !important;
-  border-radius: .55rem !important;
-  font-size: .74rem !important;
-  font-weight: 620 !important;
-  color: var(--text-soft) !important;
-}
-
-.sidebar-link-icon {
-  width: 1.65rem !important;
-  height: 1.65rem !important;
-  border-radius: .45rem !important;
-}
-
-.sidebar-link-active {
-  background:
-    linear-gradient(135deg, rgba(139, 77, 255, .34), rgba(180, 76, 255, .28)) !important;
-  box-shadow: 0 12px 28px rgba(139, 77, 255, .20), inset 0 1px 0 rgba(255,255,255,.11) !important;
-}
-
-/* controls: smaller, less round */
-button,
-a[role="button"],
-[role="button"],
-.action-link-primary,
-.action-link-secondary,
-.topbar-button,
-.topbar-button-danger,
-.theme-toggle-btn,
-.mobile-nav-chip,
-input[type="button"],
-input[type="submit"],
-input[type="reset"] {
-  min-height: 1.82rem !important;
-  padding: .42rem .64rem !important;
-  border-radius: .36rem !important;
-  font-size: .70rem !important;
-  font-weight: 720 !important;
-}
-
-/* keep the main CTA premium but not pill-heavy */
-.action-link-primary,
-button[type="submit"],
-.bg-blue-500,
-.bg-blue-600,
-.bg-purple-500,
-.bg-purple-600,
-.bg-fuchsia-500,
-.bg-fuchsia-600 {
-  background: linear-gradient(135deg, var(--primary), var(--purple) 76%, var(--pink)) !important;
-  color: white !important;
-  border-color: rgba(255,255,255,.12) !important;
-  box-shadow: 0 14px 34px rgba(139, 77, 255, .24) !important;
-}
-
-/* text balance */
-h1 { font-weight: 850 !important; }
-h2, h3 { font-weight: 760 !important; }
-p, span, a, button, input, select, textarea, li, td, th {
-  text-shadow: none !important;
-}
-
-/* less loud scrollbars */
-::-webkit-scrollbar {
-  width: 8px !important;
-  height: 8px !important;
-}
-::-webkit-scrollbar-track {
-  background: #07070b !important;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(139, 77, 255, .34) !important;
-  border: 2px solid #07070b !important;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(180, 76, 255, .48) !important;
-}
-
-/* prevent accidental green backgrounds from status/utility classes taking over panels */
-.from-\[\#07070b\],
-.via-\[\#09090f\],
-.to-\[\#151026\],
-.from-\[\#07070b\],
-.via-\[\#09090f\],
-.to-\[\#151026\] {
-  --tw-gradient-from: #07070b !important;
-  --tw-gradient-to: rgba(7, 7, 11, 0) !important;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
-}
-
-/* icon boxes should be subtle purple glass */
-div:has(> svg):not(.brand-mark):not(.sidebar-link-icon) {
-  border-color: rgba(139, 77, 255, .14);
-}
-
-
-/* --------------------------------------------------------------------------
-   ZERO-GREEN APP-WIDE OVERRIDE
-   Final pass after screenshot: removes teal/green panels and forces every
-   major dashboard column to black/purple surfaces.
--------------------------------------------------------------------------- */
-
-:root {
-  --background: #07070b;
-  --foreground: #f7f5ff;
-  --page-bg:
-    radial-gradient(circle at 12% 10%, rgba(139, 77, 255, 0.18), transparent 16rem),
-    radial-gradient(circle at 82% 8%, rgba(180, 76, 255, 0.11), transparent 18rem),
-    linear-gradient(180deg, #07070b 0%, #09090f 52%, #07070b 100%);
-
-  --surface: #0b0b11;
-  --surface-soft: #101018;
-  --surface-muted: #151521;
-  --surface-glass: rgba(11, 11, 17, 0.88);
-  --surface-glass-strong: rgba(9, 9, 15, 0.97);
-  --surface-blue: #10111f;
-  --surface-purple: #151026;
-  --surface-accent: #12101d;
-
-  --text-main: #f7f5ff;
-  --text-soft: #c4bdd7;
-  --text-muted: #8d88a3;
-  --text-faint: #5e5870;
-
-  --primary: #8b4dff;
-  --primary-strong: #a36cff;
-  --purple: #b44cff;
-  --purple-strong: #c96bff;
-  --pink: #dc4fff;
-  --green: #45e6ad;
-
-  --border-soft: rgba(255, 255, 255, 0.075);
-  --border-strong: rgba(255, 255, 255, 0.14);
-  --shadow-card: 0 18px 46px rgba(0, 0, 0, 0.40);
-  --shadow-blue: 0 16px 40px rgba(139, 77, 255, 0.26);
-
-  --input-bg: #101018;
-  --input-text: #f7f5ff;
-  --input-placeholder: #746f88;
-
-  --radius-card: .78rem;
-  --radius-panel: .92rem;
-  --radius-control: .38rem;
-  --radius-chip: .34rem;
-}
-
-/* Force black/purple root canvas */
-html,
-body,
-.app-shell,
-.app-content,
-.premium-page,
-main,
-main > div,
-[data-nextjs-scroll-focus-boundary] {
-  background:
-    radial-gradient(circle at 10% 8%, rgba(139, 77, 255, .15), transparent 17rem),
-    radial-gradient(circle at 84% 7%, rgba(180, 76, 255, .09), transparent 18rem),
-    linear-gradient(180deg, #07070b 0%, #09090f 52%, #07070b 100%) !important;
-  color: var(--text-main) !important;
-}
-
-/* Force every full-height split panel, including conversations right pane */
-[class*="h-full"],
-[class*="min-h-screen"],
-[class*="flex-1"],
-[class*="overflow-hidden"],
-[class*="overflow-y-auto"] {
-  background-color: transparent !important;
-}
-
-/* Specific hard kill for the green/teal conversation pane seen in screenshot */
-[class*="#001"],
-.bg-\[\#001a14\],
-.bg-\[\#00140f\],
-.bg-\[\#001f18\],
-.bg-\[\#002018\],
-.bg-\[\#001b14\],
-.bg-\[\#00251b\],
-.bg-emerald-950,
-.bg-teal-950,
-.bg-green-950,
-.from-emerald-950,
-.via-emerald-950,
-.to-emerald-950,
-.from-teal-950,
-.via-teal-950,
-.to-teal-950,
-.from-green-950,
-.via-green-950,
-.to-green-950 {
-  background: #07070b !important;
-  background-color: #07070b !important;
-  --tw-gradient-from: #07070b !important;
-  --tw-gradient-to: rgba(7, 7, 11, 0) !important;
-  --tw-gradient-stops: #07070b, #09090f, #151026 !important;
-}
-
-/* All dashboard cards/panels */
-.app-sidebar,
-.app-topbar,
-section,
-article,
-aside,
-form,
-table,
-div[class*="rounded"][class*="border"],
-div[class*="shadow"][class*="rounded"],
-.dark-card,
-.dark-card-soft,
-.smart-card,
-.premium-card,
-.mobile-ui-card,
-.mobile-task-card {
-  background:
-    radial-gradient(circle at 14% 0%, rgba(139, 77, 255, .045), transparent 11rem),
-    linear-gradient(180deg, rgba(11, 11, 17, .985), rgba(8, 9, 15, .985)) !important;
-  border-color: rgba(255,255,255,.075) !important;
-  color: var(--text-main) !important;
-  box-shadow: 0 18px 44px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.025) !important;
-}
-
-/* Sidebar gets purple depth only */
 .app-sidebar {
-  background:
-    radial-gradient(circle at 20% 2%, rgba(139, 77, 255, .22), transparent 12rem),
-    radial-gradient(circle at 82% 42%, rgba(180, 76, 255, .08), transparent 16rem),
-    linear-gradient(180deg, rgba(15, 12, 28, .98), rgba(9, 9, 15, .98)) !important;
+  border-right: 1px solid rgba(255,255,255,0.12);
+  background: var(--brand-green) !important;
+  box-shadow: 22px 0 70px rgba(18, 61, 52, 0.16);
 }
 
-/* Inputs/search bars */
-input,
-select,
-textarea,
-[role="searchbox"] {
-  background: #101018 !important;
-  color: var(--text-main) !important;
-  border-color: rgba(255,255,255,.13) !important;
+.brand-card {
+  border-radius: 1.35rem;
+  padding: 0.45rem;
+  transition: background 0.15s ease;
+}
+.brand-card:hover { background: rgba(255, 255, 255, 0.08); }
+
+.app-sidebar .brand-card p:first-of-type,
+.app-sidebar .text-white { color: #ffffff !important; }
+.app-sidebar .text-slate-400,
+.app-sidebar .text-slate-500 { color: rgba(255,255,255,0.66) !important; }
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 1.15rem;
+  padding: 0.68rem 0.75rem;
+  color: rgba(255,255,255,0.72);
+  font-size: 0.84rem;
+  font-weight: 800;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+.sidebar-link:hover {
+  transform: translateX(2px);
+  background: rgba(255,255,255,0.08);
+  color: #ffffff;
+}
+.sidebar-link-active {
+  background: var(--brand-lime) !important;
+  color: var(--brand-ink) !important;
+  box-shadow: 0 14px 36px rgba(200, 248, 74, 0.18);
+}
+.sidebar-link-icon {
+  display: flex;
+  width: 2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.85rem;
+  background: rgba(255,255,255,0.10);
+  color: currentColor;
+  font-size: 0.78rem;
+}
+.sidebar-link-active .sidebar-link-icon { background: rgba(17,19,18,0.08); }
+
+.app-topbar {
+  border-bottom: 1px solid var(--border-soft);
+  background: var(--topbar-bg) !important;
+  backdrop-filter: blur(18px);
 }
 
-/* Keep accent green for tiny icons/text only, not backgrounds */
-.text-emerald-400,
-.text-emerald-300,
-.text-green-400,
-.text-teal-400 {
-  color: #45e6ad !important;
-}
-.bg-emerald-500,
-.bg-green-500,
-.bg-teal-500 {
-  background: linear-gradient(135deg, var(--primary), var(--purple) 76%, var(--pink)) !important;
-}
-
-/* Smaller sharper controls */
-button,
-a[role="button"],
-[role="button"],
-.action-link-primary,
-.action-link-secondary,
+.top-search,
 .topbar-button,
 .topbar-button-danger,
-.theme-toggle-btn,
 .mobile-nav-chip,
-input[type="button"],
-input[type="submit"],
-input[type="reset"] {
-  min-height: 1.82rem !important;
-  padding: .42rem .64rem !important;
-  border-radius: .36rem !important;
-  font-size: .70rem !important;
-  font-weight: 720 !important;
+.action-link-primary,
+.action-link-secondary {
+  border: 1px solid var(--border-soft);
+  background: #ffffff !important;
+  color: var(--text-main) !important;
+  box-shadow: 0 8px 24px rgba(17,19,18,0.04);
 }
 
-/* Tighter spacing */
-:is(.p-10, .p-9, .p-8, .p-7, .p-6, .p-5) {
-  padding: clamp(1rem, 1.55vw, 1.35rem) !important;
-}
-:is(.gap-10, .gap-9, .gap-8, .gap-7, .gap-6) {
-  gap: clamp(.85rem, 1.35vw, 1.12rem) !important;
-}
-
-/* Subtle scrollbar */
-::-webkit-scrollbar {
-  width: 8px !important;
-  height: 8px !important;
-}
-::-webkit-scrollbar-track {
-  background: #07070b !important;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(139, 77, 255, .34) !important;
-  border: 2px solid #07070b !important;
+.topbar-button,
+.topbar-button-danger,
+.action-link-primary,
+.action-link-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  padding: 0.64rem 0.85rem;
+  font-size: 0.76rem;
+  font-weight: 900;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
 }
 
-
-/* --------------------------------------------------------------------------
-   SMALL VISUAL POLISH PASS
-   Keeps the current black/purple base, but softens bright items and tightens UI.
--------------------------------------------------------------------------- */
-
-/* Softer active sidebar item */
-.sidebar-link-active {
-  background:
-    radial-gradient(circle at 12% 18%, rgba(255,255,255,.08), transparent 42%),
-    linear-gradient(135deg, rgba(139, 77, 255, .22), rgba(180, 76, 255, .15)),
-    rgba(16, 12, 30, .96) !important;
-  border-color: rgba(139, 77, 255, .42) !important;
-  box-shadow:
-    0 0 0 1px rgba(139, 77, 255, .16),
-    0 14px 30px rgba(139, 77, 255, .16),
-    inset 0 1px 0 rgba(255,255,255,.07) !important;
+.topbar-button:hover,
+.action-link-primary:hover,
+.action-link-secondary:hover,
+.topbar-button-danger:hover {
+  transform: translateY(-1px);
+  border-color: rgba(18,61,52,0.22) !important;
+  background: #f9faf7 !important;
 }
 
-.sidebar-link-active::after {
-  opacity: .55 !important;
+.action-link-primary,
+.topbar-button-primary,
+.public-form-submit,
+button[type="submit"] {
+  background: var(--brand-green) !important;
+  border-color: var(--brand-green) !important;
+  color: #ffffff !important;
+  box-shadow: 0 14px 34px rgba(18, 61, 52, 0.15) !important;
 }
 
-/* Lighter sidebar typography */
-.sidebar-link {
-  font-weight: 600 !important;
-  color: rgba(220, 214, 238, .82) !important;
+.topbar-button-danger,
+.action-link-secondary {
+  background: #ffffff !important;
+  color: var(--brand-ink) !important;
 }
 
-.sidebar-link:hover {
+.mobile-nav-chip {
+  white-space: nowrap;
+  border-radius: 1rem;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.76rem;
+  font-weight: 900;
+  color: var(--text-soft) !important;
+}
+.mobile-nav-chip-active {
+  background: var(--brand-green) !important;
+  color: #ffffff !important;
+  border-color: var(--brand-green) !important;
+}
+
+.input-compact,
+main input:not(.bg-transparent),
+main select,
+main textarea {
+  width: 100%;
+  border-radius: 0.9rem;
+  border: 1px solid var(--border-strong) !important;
+  background: var(--input-bg) !important;
+  padding: 0.62rem 0.78rem;
+  font-size: 0.85rem;
+  color: var(--input-text) !important;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.input-compact::placeholder,
+main input::placeholder,
+main textarea::placeholder { color: var(--input-placeholder) !important; }
+.input-compact:focus,
+main input:focus,
+main select:focus,
+main textarea:focus {
+  border-color: rgba(18,61,52,0.42) !important;
+  box-shadow: 0 0 0 3px rgba(200,248,74,0.26) !important;
+}
+
+.dark-card,
+.dark-card-soft,
+.app-shell section,
+.app-shell article,
+.app-shell form,
+.app-shell aside:not(.app-sidebar) {
+  color: var(--text-main) !important;
+  border-color: var(--border-soft) !important;
+  background: var(--surface-bg) !important;
+  background-image: none !important;
+  box-shadow: 0 18px 45px rgba(17,19,18,0.06) !important;
+}
+
+.dark-card-soft { background: var(--surface-bg-soft) !important; }
+.glow-border::before { display: none !important; }
+
+/* Legacy Tailwind color cleanup across every page. */
+.app-shell :is(.bg-white, .bg-slate-50, .bg-slate-100, .bg-white\/7, .bg-white\/8, .bg-white\/10, .bg-white\/12, .bg-white\/[0\.03]),
+.worker-login-page :is(.bg-white, .bg-slate-50, .bg-slate-100, .bg-white\/7, .bg-white\/8, .bg-white\/10, .bg-white\/12),
+.public-form-page :is(.bg-white, .bg-slate-50, .bg-slate-100) {
+  background: var(--surface-bg) !important;
+  background-image: none !important;
+  color: var(--text-main) !important;
+  border-color: var(--border-soft) !important;
+}
+
+.app-shell :is(.bg-gradient-to-r, .bg-gradient-to-br, .bg-gradient-to-b),
+.worker-login-page :is(.bg-gradient-to-r, .bg-gradient-to-br, .bg-gradient-to-b) {
+  background: var(--surface-bg) !important;
+  background-image: none !important;
+  color: var(--text-main) !important;
+  border-color: var(--border-soft) !important;
+}
+
+.app-shell :is(.bg-slate-950, .bg-black, .bg-\[\#172033\], .bg-\[\#07111f\]\/65),
+.worker-login-page :is(.bg-slate-950, .bg-black, .bg-\[\#172033\], .bg-\[\#07111f\]\/65) {
+  background: var(--brand-green) !important;
+  background-image: none !important;
   color: #ffffff !important;
 }
 
-.app-sidebar h2,
-.app-sidebar h3,
-.app-sidebar [class*="tracking"] {
-  color: rgba(220, 214, 238, .72) !important;
-  font-weight: 650 !important;
+.app-shell :is(.text-white, .text-slate-50, .text-slate-100, .text-slate-200, .text-slate-300, .text-blue-200, .text-violet-200, .text-cyan-200, .text-fuchsia-200),
+.worker-login-page :is(.text-white, .text-slate-50, .text-slate-100, .text-slate-200, .text-slate-300, .text-blue-200, .text-violet-200, .text-cyan-200, .text-fuchsia-200) {
+  color: var(--text-main) !important;
 }
 
-/* Softer cards and slightly denser dashboard grid */
-section[class*="rounded"][class*="border"],
-article[class*="rounded"][class*="border"],
-div[class*="rounded"][class*="border"],
-form[class*="rounded"],
-.dark-card,
-.dark-card-soft,
-.smart-card,
-.premium-card,
-.mobile-ui-card,
-.mobile-task-card {
-  border-color: rgba(255,255,255,.055) !important;
-  box-shadow:
-    0 14px 34px rgba(0,0,0,.34),
-    inset 0 1px 0 rgba(255,255,255,.018) !important;
+.app-sidebar :is(.text-white, .text-slate-50, .text-slate-100, .text-slate-200, .text-slate-300),
+.app-sidebar .sidebar-link,
+.app-sidebar .sidebar-link:hover {
+  color: rgba(255,255,255,0.78) !important;
+}
+.app-sidebar .sidebar-link-active,
+.app-sidebar .sidebar-link-active * { color: var(--brand-ink) !important; }
+
+.app-shell :is(.text-slate-950, .text-slate-900, .text-slate-800, .text-black, .text-\[\#172033\]),
+.worker-login-page :is(.text-slate-950, .text-slate-900, .text-slate-800, .text-black, .text-\[\#172033\]) {
+  color: var(--text-main) !important;
+}
+.app-shell :is(.text-slate-700, .text-slate-600, .text-\[\#4b5563\]),
+.worker-login-page :is(.text-slate-700, .text-slate-600, .text-\[\#4b5563\]) {
+  color: var(--text-soft) !important;
+}
+.app-shell :is(.text-slate-500, .text-slate-400, .text-\[\#6b7280\]),
+.worker-login-page :is(.text-slate-500, .text-slate-400, .text-\[\#6b7280\]) {
+  color: var(--text-muted) !important;
 }
 
-/* Reduce tall dashboard card feeling */
-.grid > a[class*="rounded"],
-.grid > div[class*="rounded"],
-.grid > section[class*="rounded"] {
-  padding-top: 1.05rem !important;
-  padding-bottom: 1.05rem !important;
+.app-shell :is(.border-slate-200, .border-slate-100, .border-black\/10, .border-black\/5, .border-white\/10) {
+  border-color: var(--border-soft) !important;
+}
+.app-shell :is(.shadow, .shadow-sm, .shadow-xl, .shadow-lg) {
+  box-shadow: 0 14px 36px rgba(17,19,18,0.06) !important;
+}
+.app-shell :is(.rounded-2xl, .rounded-3xl, .rounded-\[28px\], .rounded-\[1\.7rem\]) {
+  border-radius: 1.35rem !important;
 }
 
-:is(.p-10, .p-9, .p-8, .p-7, .p-6, .p-5) {
-  padding: clamp(.92rem, 1.35vw, 1.22rem) !important;
+/* Intentional dark-green buttons and icons keep white text. */
+.app-shell :is(.bg-slate-950, .bg-black, .bg-\[\#172033\], .bg-\[\#25D366\]) :is(.text-white, .text-slate-50, .text-slate-100, .text-slate-200),
+.app-shell :is(.bg-slate-950, .bg-black, .bg-\[\#172033\], .bg-\[\#25D366\]).text-white,
+.worker-login-page button[type="submit"],
+.public-form-submit {
+  color: #ffffff !important;
 }
-
-:is(.gap-10, .gap-9, .gap-8, .gap-7, .gap-6) {
-  gap: clamp(.72rem, 1.15vw, 1rem) !important;
-}
-
-/* Make icon tiles less bulky */
-div:has(> svg) {
-  box-shadow: none;
-}
-
-.grid div:has(> svg),
-section div:has(> svg) {
-  border-color: rgba(255,255,255,.06) !important;
-}
-
-/* Softer typography */
-h1 {
-  font-weight: 800 !important;
-  letter-spacing: -0.055em !important;
-}
-
-h2,
-h3,
-.font-bold,
-.font-black {
-  font-weight: 720 !important;
-}
-
-p,
-.text-sm,
-.text-xs {
-  line-height: 1.65 !important;
-}
-
-/* Logout area should match the premium dark UI, not red */
-.topbar-button-danger,
-button.topbar-button-danger,
-a.topbar-button-danger,
-[class*="Logout"],
-[href*="logout"] {
-  color: rgba(255, 198, 211, .92) !important;
-  background:
-    linear-gradient(135deg, rgba(255, 93, 127, .08), rgba(139, 77, 255, .08)),
-    rgba(14, 11, 18, .96) !important;
-  border-color: rgba(255, 93, 127, .20) !important;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.035) !important;
-}
-
-/* Buttons: compact, sharp, but still premium */
-button,
-a[role="button"],
-[role="button"],
-.action-link-primary,
-.action-link-secondary,
-.topbar-button,
-.topbar-button-danger,
-.theme-toggle-btn,
-.mobile-nav-chip,
-input[type="button"],
-input[type="submit"],
-input[type="reset"] {
-  min-height: 1.72rem !important;
-  padding: .38rem .58rem !important;
-  border-radius: .34rem !important;
-}
-
-/* Main CTA less pill-like and less oversized */
-.action-link-primary,
-button[type="submit"],
-.bg-blue-500,
-.bg-blue-600,
-.bg-purple-500,
-.bg-purple-600,
-.bg-fuchsia-500,
-.bg-fuchsia-600 {
-  box-shadow: 0 12px 28px rgba(139, 77, 255, .20) !important;
-}
-
-/* More subtle divider lines */
-.border,
-[class*="border"] {
-  border-color: rgba(255,255,255,.055) !important;
-}
-
-/* Subtle scrollbar */
-::-webkit-scrollbar-thumb {
-  background: rgba(139, 77, 255, .28) !important;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(180, 76, 255, .40) !important;
-}
+.app-shell .bg-\[\#25D366\] { background: var(--whatsapp) !important; color: #063318 !important; }
 
 
-/* --------------------------------------------------------------------------
-   SOFT MIXED CARD PALETTE
-   Gives cards subtle varied dark color mixes across pages.
--------------------------------------------------------------------------- */
+
+/* Dark-green surfaces must always carry light text.
+   This fixes cases where legacy light-mode cleanup turned text-white/text-black
+   into dark ink while the background stayed brand green. */
+:where(.app-shell, .worker-login-page, .public-form-page) :is(
+  [class*="bg-[var(--brand-green)]"],
+  .topbar-button-primary,
+  .action-link-primary,
+  .public-form-submit,
+  .mobile-nav-chip-active,
+  button[type="submit"],
+  .bg-slate-950,
+  .bg-black,
+  .public-form-header
+) {
+  background-color: var(--brand-green) !important;
+  background-image: none !important;
+  border-color: var(--brand-green) !important;
+  color: #ffffff !important;
+}
+
+:where(.app-shell, .worker-login-page, .public-form-page) :is(
+  [class*="bg-[var(--brand-green)]"],
+  .topbar-button-primary,
+  .action-link-primary,
+  .public-form-submit,
+  .mobile-nav-chip-active,
+  button[type="submit"],
+  .bg-slate-950,
+  .bg-black,
+  .public-form-header
+) :is(h1, h2, h3, h4, p, span, small, strong, em, label, a, button) {
+  color: #ffffff !important;
+}
+
+:where(.app-shell, .worker-login-page, .public-form-page) :is(
+  [class*="bg-[var(--brand-green)]"],
+  .topbar-button-primary,
+  .action-link-primary,
+  .public-form-submit,
+  .mobile-nav-chip-active,
+  button[type="submit"],
+  .bg-slate-950,
+  .bg-black,
+  .public-form-header
+):hover {
+  background-color: var(--brand-green-2) !important;
+  color: #ffffff !important;
+}
+
+/* Keep white cards/surfaces readable with dark text, even if old components
+   still contain text-white classes from the former dark UI. */
+:where(.app-shell, .worker-login-page, .public-form-page) :is(
+  .bg-white,
+  .bg-slate-50,
+  .bg-slate-100,
+  .dark-card,
+  .dark-card-soft,
+  section,
+  article,
+  form,
+  aside:not(.app-sidebar)
+):not(.public-form-header):not(.app-sidebar) {
+  color: var(--text-main) !important;
+}
+
+/* Sidebar is intentionally dark green. Only the active lime item should use dark text. */
+.app-sidebar,
+.app-sidebar *:not(.sidebar-link-active):not(.sidebar-link-active *) {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+.app-sidebar .brand-card p:first-of-type,
+.app-sidebar .brand-card p:first-of-type * {
+  color: #ffffff !important;
+}
+.app-sidebar .sidebar-link-active,
+.app-sidebar .sidebar-link-active * {
+  color: var(--brand-ink) !important;
+}
+
+main button,
+main a { transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease, opacity 0.18s ease; }
+main button:hover,
+main a:hover { transform: translateY(-1px); }
+
+.theme-toggle-btn { display: none !important; }
+
+/* Status badges tuned for the new light palette. */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  padding: 0.3rem 0.62rem;
+  font-size: 0.7rem;
+  font-weight: 900;
+  line-height: 1;
+}
+.status-badge-blue { color: #174a3f; background: rgba(23,74,63,.10); }
+.status-badge-emerald { color: #047857; background: rgba(16,185,129,.10); }
+.status-badge-violet { color: #5b5f18; background: rgba(200,248,74,.26); }
+.status-badge-cyan { color: #0f766e; background: rgba(20,184,166,.10); }
+.status-badge-amber { color: #92400e; background: rgba(245,158,11,.12); }
+.status-badge-red { color: #b91c1c; background: rgba(239,68,68,.10); }
+.status-badge-slate { color: #475569; background: rgba(100,116,139,.10); }
+
+/* Worker login is now regular light mode too. */
+.worker-login-page {
+  background: var(--page-bg) !important;
+  color: var(--text-main) !important;
+}
+.worker-login-page .dark-card {
+  background: #ffffff !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border-soft) !important;
+  box-shadow: 0 24px 70px rgba(17,19,18,0.08) !important;
+}
+.worker-login-page .absolute.rounded-full { display: none !important; }
+.worker-login-page .border-white\/10 { border-color: var(--border-soft) !important; }
+.worker-login-page input.bg-transparent {
+  color: var(--text-main) !important;
+  background: transparent !important;
+}
+.worker-login-page input.bg-transparent::placeholder { color: var(--input-placeholder) !important; }
+.worker-login-page button[type="button"] { color: var(--text-soft) !important; }
+
+/* Public welcome form: dark official header + light body. */
+.public-form-page {
+  background: var(--page-bg) !important;
+  color: var(--text-main) !important;
+  font-family: var(--font-official);
+}
+.public-form-shell,
+.public-form-card {
+  background: #ffffff !important;
+  color: var(--text-main) !important;
+  border-color: var(--border-soft) !important;
+}
+.public-form-header {
+  background: var(--brand-green) !important;
+  color: #ffffff !important;
+  border-color: rgba(255,255,255,0.10) !important;
+}
+.public-form-header .public-form-logo {
+  background: rgba(255,255,255,0.96) !important;
+  border-color: rgba(255,255,255,0.22) !important;
+}
+.public-form-header :is(h1, h2, h3, p, span) { color: inherit !important; }
+.public-form-header .public-form-muted { color: rgba(255,255,255,0.76) !important; }
+.public-form-card :is(h1, h2, h3, p, span, label) { color: var(--text-main); }
+.public-form-card .public-form-muted,
+.public-form-shell .public-form-muted { color: var(--text-muted) !important; }
+.public-form-card .public-form-label { color: var(--text-soft) !important; }
+.public-form-card .public-form-divider { border-color: var(--border-soft) !important; }
+.public-form-card .public-form-panel {
+  background: var(--surface-bg-soft) !important;
+  border: 1px solid var(--border-soft) !important;
+  color: var(--text-main) !important;
+}
+.public-form-card input,
+.public-form-card select,
+.public-form-card textarea {
+  background: #ffffff !important;
+  color: var(--text-main) !important;
+  border-color: var(--border-strong) !important;
+}
+.public-form-submit { background: var(--brand-green) !important; color: #ffffff !important; }
+.public-form-submit:hover { background: var(--brand-green-2) !important; }
+
+@media print {
+  aside, header { display: none !important; }
+  body, main, section { background: white !important; color: black !important; }
+}
+/* =========================================================
+   Waykesi Light Theme - Contrast Patch
+   Fix dark text appearing on dark green dashboard surfaces
+   ========================================================= */
+
+/* Any deep green surface must use readable light text */
+.bg-\[\#0f4638\],
+.bg-\[\#10483a\],
+.bg-\[\#123f35\],
+.bg-\[\#124a3d\],
+.bg-\[\#143f36\],
+.bg-\[\#164c3f\],
+.bg-\[\#174c40\],
+.bg-\[\#0f3f35\],
+.bg-\[\#0f3d33\],
+.bg-\[\#114537\],
+[class*="bg-[#0f4638]"],
+[class*="bg-[#10483a]"],
+[class*="bg-[#123f35]"],
+[class*="bg-[#124a3d]"],
+[class*="bg-[#143f36]"],
+[class*="bg-[#164c3f]"],
+[class*="bg-[#174c40]"],
+[class*="bg-[#0f3f35]"],
+[class*="bg-[#0f3d33]"],
+[class*="bg-[#114537]"] {
+  color: #ffffff !important;
+}
+
+/* Text inside dark green surfaces */
+.bg-\[\#0f4638\] *,
+.bg-\[\#10483a\] *,
+.bg-\[\#123f35\] *,
+.bg-\[\#124a3d\] *,
+.bg-\[\#143f36\] *,
+.bg-\[\#164c3f\] *,
+.bg-\[\#174c40\] *,
+.bg-\[\#0f3f35\] *,
+.bg-\[\#0f3d33\] *,
+.bg-\[\#114537\] * {
+  color: inherit !important;
+}
+
+/* Muted labels inside dark green cards should be soft lime/white, not grey-black */
+.bg-\[\#0f4638\] .text-slate-500,
+.bg-\[\#10483a\] .text-slate-500,
+.bg-\[\#123f35\] .text-slate-500,
+.bg-\[\#124a3d\] .text-slate-500,
+.bg-\[\#143f36\] .text-slate-500,
+.bg-\[\#164c3f\] .text-slate-500,
+.bg-\[\#174c40\] .text-slate-500,
+.bg-\[\#0f3f35\] .text-slate-500,
+.bg-\[\#0f3d33\] .text-slate-500,
+.bg-\[\#114537\] .text-slate-500,
+.bg-\[\#0f4638\] .text-slate-600,
+.bg-\[\#10483a\] .text-slate-600,
+.bg-\[\#123f35\] .text-slate-600,
+.bg-\[\#124a3d\] .text-slate-600,
+.bg-\[\#143f36\] .text-slate-600,
+.bg-\[\#164c3f\] .text-slate-600,
+.bg-\[\#174c40\] .text-slate-600,
+.bg-\[\#0f3f35\] .text-slate-600,
+.bg-\[\#0f3d33\] .text-slate-600,
+.bg-\[\#114537\] .text-slate-600 {
+  color: #d9f99d !important;
+}
+
+/* Primary deep green buttons */
+button.bg-\[\#0f4638\],
+button.bg-\[\#10483a\],
+button.bg-\[\#123f35\],
+a.bg-\[\#0f4638\],
+a.bg-\[\#10483a\],
+a.bg-\[\#123f35\] {
+  color: #ffffff !important;
+}
+
+/* Primary deep green button children */
+button.bg-\[\#0f4638\] *,
+button.bg-\[\#10483a\] *,
+button.bg-\[\#123f35\] *,
+a.bg-\[\#0f4638\] *,
+a.bg-\[\#10483a\] *,
+a.bg-\[\#123f35\] * {
+  color: #ffffff !important;
+}
+
+/* Active lime navigation should keep dark readable text */
+.bg-\[\#befa3c\],
+.bg-\[\#c8ff3d\],
+.bg-\[\#d4ff57\],
+[class*="bg-[#befa3c]"],
+[class*="bg-[#c8ff3d]"],
+[class*="bg-[#d4ff57]"] {
+  color: #07130f !important;
+}
+
+.bg-\[\#befa3c\] *,
+.bg-\[\#c8ff3d\] *,
+.bg-\[\#d4ff57\] * {
+  color: #07130f !important;
+}
+
+/* Care pulse metric cards on dashboard */
+.care-pulse-card,
+.dashboard-metric-dark,
+.dashboard-stat-dark {
+  background: #10483a !important;
+  color: #ffffff !important;
+}
+
+.care-pulse-card *,
+.dashboard-metric-dark *,
+.dashboard-stat-dark * {
+  color: inherit !important;
+}
+
+/* =========================================================
+   WelCare App-wide Readability + Contrast Cleanup
+   Slightly larger official typography + strict light theme
+   ========================================================= */
 
 :root {
-  --card-mix-1:
-    radial-gradient(circle at 14% 12%, rgba(87, 168, 255, 0.10), transparent 10rem),
-    radial-gradient(circle at 88% 10%, rgba(139, 77, 255, 0.09), transparent 12rem),
-    linear-gradient(180deg, rgba(11, 13, 24, .98), rgba(8, 9, 15, .985));
-
-  --card-mix-2:
-    radial-gradient(circle at 12% 10%, rgba(180, 76, 255, 0.10), transparent 10rem),
-    radial-gradient(circle at 82% 14%, rgba(220, 79, 255, 0.08), transparent 11rem),
-    linear-gradient(180deg, rgba(16, 10, 24, .98), rgba(9, 9, 15, .985));
-
-  --card-mix-3:
-    radial-gradient(circle at 10% 12%, rgba(69, 230, 173, 0.08), transparent 10rem),
-    radial-gradient(circle at 84% 10%, rgba(87, 168, 255, 0.08), transparent 12rem),
-    linear-gradient(180deg, rgba(9, 15, 19, .98), rgba(8, 9, 15, .985));
-
-  --card-mix-4:
-    radial-gradient(circle at 14% 12%, rgba(255, 147, 77, 0.08), transparent 10rem),
-    radial-gradient(circle at 84% 10%, rgba(220, 79, 255, 0.07), transparent 12rem),
-    linear-gradient(180deg, rgba(18, 12, 18, .98), rgba(9, 9, 15, .985));
-
-  --card-mix-5:
-    radial-gradient(circle at 12% 10%, rgba(139, 77, 255, 0.09), transparent 10rem),
-    radial-gradient(circle at 88% 14%, rgba(69, 230, 173, 0.06), transparent 12rem),
-    linear-gradient(180deg, rgba(12, 11, 20, .98), rgba(8, 9, 15, .985));
-
-  --card-mix-6:
-    radial-gradient(circle at 16% 12%, rgba(87, 168, 255, 0.07), transparent 10rem),
-    radial-gradient(circle at 86% 12%, rgba(255, 147, 77, 0.06), transparent 12rem),
-    linear-gradient(180deg, rgba(12, 12, 18, .98), rgba(8, 9, 15, .985));
+  font-size: 16.5px;
 }
 
-/* Base shared card feel */
-.app-content main .grid > section[class*="rounded"][class*="border"],
-.app-content main .grid > article[class*="rounded"][class*="border"],
-.app-content main .grid > div[class*="rounded"][class*="border"],
-.app-content main .grid > form[class*="rounded"],
-.app-content main > section[class*="rounded"][class*="border"],
-.app-content main > article[class*="rounded"][class*="border"],
-.app-content main > div[class*="rounded"][class*="border"],
-.app-content main > form[class*="rounded"] {
-  border-color: rgba(255,255,255,.05) !important;
-  box-shadow:
-    0 14px 34px rgba(0,0,0,.30),
-    inset 0 1px 0 rgba(255,255,255,.02) !important;
+/* Slightly improve general readability */
+body {
+  font-size: 1rem;
+  line-height: 1.55;
 }
 
-/* Rotating soft color mixes for cards */
-.app-content main .grid > section[class*="rounded"][class*="border"]:nth-child(6n+1),
-.app-content main .grid > article[class*="rounded"][class*="border"]:nth-child(6n+1),
-.app-content main .grid > div[class*="rounded"][class*="border"]:nth-child(6n+1),
-.app-content main .grid > form[class*="rounded"]:nth-child(6n+1),
-.app-content main > section[class*="rounded"][class*="border"]:nth-of-type(6n+1),
-.app-content main > article[class*="rounded"][class*="border"]:nth-of-type(6n+1),
-.app-content main > div[class*="rounded"][class*="border"]:nth-of-type(6n+1),
-.app-content main > form[class*="rounded"]:nth-of-type(6n+1) {
-  background: var(--card-mix-1) !important;
+/* Make tiny utility text slightly more readable app-wide */
+.text-\[10px\] {
+  font-size: 0.72rem !important;
 }
 
-.app-content main .grid > section[class*="rounded"][class*="border"]:nth-child(6n+2),
-.app-content main .grid > article[class*="rounded"][class*="border"]:nth-child(6n+2),
-.app-content main .grid > div[class*="rounded"][class*="border"]:nth-child(6n+2),
-.app-content main .grid > form[class*="rounded"]:nth-child(6n+2),
-.app-content main > section[class*="rounded"][class*="border"]:nth-of-type(6n+2),
-.app-content main > article[class*="rounded"][class*="border"]:nth-of-type(6n+2),
-.app-content main > div[class*="rounded"][class*="border"]:nth-of-type(6n+2),
-.app-content main > form[class*="rounded"]:nth-of-type(6n+2) {
-  background: var(--card-mix-2) !important;
+.text-\[0\.65rem\],
+.text-\[0\.68rem\],
+.text-\[0\.7rem\],
+.text-\[0\.72rem\] {
+  font-size: 0.78rem !important;
 }
 
-.app-content main .grid > section[class*="rounded"][class*="border"]:nth-child(6n+3),
-.app-content main .grid > article[class*="rounded"][class*="border"]:nth-child(6n+3),
-.app-content main .grid > div[class*="rounded"][class*="border"]:nth-child(6n+3),
-.app-content main .grid > form[class*="rounded"]:nth-child(6n+3),
-.app-content main > section[class*="rounded"][class*="border"]:nth-of-type(6n+3),
-.app-content main > article[class*="rounded"][class*="border"]:nth-of-type(6n+3),
-.app-content main > div[class*="rounded"][class*="border"]:nth-of-type(6n+3),
-.app-content main > form[class*="rounded"]:nth-of-type(6n+3) {
-  background: var(--card-mix-3) !important;
+.text-\[0\.75rem\],
+.text-\[0\.76rem\],
+.text-\[0\.78rem\] {
+  font-size: 0.84rem !important;
 }
 
-.app-content main .grid > section[class*="rounded"][class*="border"]:nth-child(6n+4),
-.app-content main .grid > article[class*="rounded"][class*="border"]:nth-child(6n+4),
-.app-content main .grid > div[class*="rounded"][class*="border"]:nth-child(6n+4),
-.app-content main .grid > form[class*="rounded"]:nth-child(6n+4),
-.app-content main > section[class*="rounded"][class*="border"]:nth-of-type(6n+4),
-.app-content main > article[class*="rounded"][class*="border"]:nth-of-type(6n+4),
-.app-content main > div[class*="rounded"][class*="border"]:nth-of-type(6n+4),
-.app-content main > form[class*="rounded"]:nth-of-type(6n+4) {
-  background: var(--card-mix-4) !important;
+.text-\[0\.82rem\],
+.text-\[0\.85rem\],
+.text-\[0\.9rem\] {
+  font-size: 0.95rem !important;
 }
 
-.app-content main .grid > section[class*="rounded"][class*="border"]:nth-child(6n+5),
-.app-content main .grid > article[class*="rounded"][class*="border"]:nth-child(6n+5),
-.app-content main .grid > div[class*="rounded"][class*="border"]:nth-child(6n+5),
-.app-content main .grid > form[class*="rounded"]:nth-child(6n+5),
-.app-content main > section[class*="rounded"][class*="border"]:nth-of-type(6n+5),
-.app-content main > article[class*="rounded"][class*="border"]:nth-of-type(6n+5),
-.app-content main > div[class*="rounded"][class*="border"]:nth-of-type(6n+5),
-.app-content main > form[class*="rounded"]:nth-of-type(6n+5) {
-  background: var(--card-mix-5) !important;
+/* Keep headings slightly stronger and more premium */
+h1,
+.font-display.text-\[2\.15rem\],
+.font-display.text-\[3rem\] {
+  letter-spacing: -0.045em !important;
 }
 
-.app-content main .grid > section[class*="rounded"][class*="border"]:nth-child(6n),
-.app-content main .grid > article[class*="rounded"][class*="border"]:nth-child(6n),
-.app-content main .grid > div[class*="rounded"][class*="border"]:nth-child(6n),
-.app-content main .grid > form[class*="rounded"]:nth-child(6n),
-.app-content main > section[class*="rounded"][class*="border"]:nth-of-type(6n),
-.app-content main > article[class*="rounded"][class*="border"]:nth-of-type(6n),
-.app-content main > div[class*="rounded"][class*="border"]:nth-of-type(6n),
-.app-content main > form[class*="rounded"]:nth-of-type(6n) {
-  background: var(--card-mix-6) !important;
+/* Light theme surfaces must use dark readable text */
+.bg-white,
+.bg-slate-50,
+.bg-slate-100,
+.dark-card,
+.dark-card-soft,
+section.bg-white,
+article.bg-white,
+aside.bg-white,
+form.bg-white {
+  color: #07130f !important;
 }
+
+/* Text inside light surfaces should not remain white/faint */
+.bg-white .text-white,
+.bg-white\/80 .text-white,
+.bg-white\/90 .text-white,
+.bg-slate-50 .text-white,
+.bg-slate-100 .text-white,
+.dark-card .text-white,
+.dark-card-soft .text-white,
+section.bg-white .text-white,
+article.bg-white .text-white,
+aside.bg-white .text-white,
+form.bg-white .text-white {
+  color: #07130f !important;
+}
+
+.bg-white .text-slate-200,
+.bg-white .text-slate-300,
+.bg-white .text-slate-400,
+.bg-white\/80 .text-slate-200,
+.bg-white\/80 .text-slate-300,
+.bg-white\/80 .text-slate-400,
+.bg-white\/90 .text-slate-200,
+.bg-white\/90 .text-slate-300,
+.bg-white\/90 .text-slate-400,
+.bg-slate-50 .text-slate-200,
+.bg-slate-50 .text-slate-300,
+.bg-slate-50 .text-slate-400,
+.bg-slate-100 .text-slate-200,
+.bg-slate-100 .text-slate-300,
+.bg-slate-100 .text-slate-400,
+.dark-card .text-slate-200,
+.dark-card .text-slate-300,
+.dark-card .text-slate-400,
+.dark-card-soft .text-slate-200,
+.dark-card-soft .text-slate-300,
+.dark-card-soft .text-slate-400 {
+  color: #475569 !important;
+}
+
+/* Deep green brand buttons/surfaces must always use white text */
+.bg-\[var\(--brand-green\)\],
+.bg-\[\#10483a\],
+.bg-\[\#0f4638\],
+.bg-\[\#123f35\],
+.bg-\[\#07111f\],
+[class*="bg-[var(--brand-green)]"],
+[class*="bg-[#10483a]"],
+[class*="bg-[#0f4638]"],
+[class*="bg-[#123f35]"],
+[class*="bg-[#07111f]"] {
+  color: #ffffff !important;
+}
+
+.bg-\[var\(--brand-green\)\] *,
+.bg-\[\#10483a\] *,
+.bg-\[\#0f4638\] *,
+.bg-\[\#123f35\] *,
+.bg-\[\#07111f\] *,
+[class*="bg-[var(--brand-green)]"] *,
+[class*="bg-[#10483a]"] *,
+[class*="bg-[#0f4638]"] *,
+[class*="bg-[#123f35]"] *,
+[class*="bg-[#07111f]"] * {
+  color: inherit !important;
+}
+
+/* Muted labels inside dark green boxes should be readable */
+.bg-\[var\(--brand-green\)\] .text-slate-400,
+.bg-\[var\(--brand-green\)\] .text-slate-500,
+.bg-\[\#10483a\] .text-slate-400,
+.bg-\[\#10483a\] .text-slate-500,
+.bg-\[\#0f4638\] .text-slate-400,
+.bg-\[\#0f4638\] .text-slate-500,
+.bg-\[\#123f35\] .text-slate-400,
+.bg-\[\#123f35\] .text-slate-500,
+.bg-\[\#07111f\] .text-slate-400,
+.bg-\[\#07111f\] .text-slate-500 {
+  color: #d9f99d !important;
+}
+
+/* Lime active items should keep dark readable text */
+.bg-\[\#befa3c\],
+.bg-\[\#c8ff3d\],
+.bg-\[\#d4ff57\],
+[class*="bg-[#befa3c]"],
+[class*="bg-[#c8ff3d]"],
+[class*="bg-[#d4ff57]"] {
+  color: #07130f !important;
+}
+
+.bg-\[\#befa3c\] *,
+.bg-\[\#c8ff3d\] *,
+.bg-\[\#d4ff57\] *,
+[class*="bg-[#befa3c]"] *,
+[class*="bg-[#c8ff3d]"] *,
+[class*="bg-[#d4ff57]"] * {
+  color: #07130f !important;
+}
+
+/* Inputs should stay readable */
+input,
+select,
+textarea {
+  font-size: 0.98rem !important;
+  color: #07130f !important;
+}
+
+/* Buttons and links should feel slightly larger */
+button,
+a {
+  font-size-adjust: none;
+}
+
