@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap");
 @import "tailwindcss";
 
 :root,
@@ -872,3 +873,26 @@ button {
 .text-\[0\.9rem\] {
   font-size: 0.86rem !important;
 }
+
+/* =========================================================
+   WelCare heading font
+   Bebas Neue for headers, body font remains unchanged
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-display {
+  font-family: "Plus Jakarta Sans", "Aptos Display", "Aptos", "Segoe UI Variable", "Segoe UI", sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.035em;
+}
+
+h1 {
+  letter-spacing: -0.04em;
+}
+
+
