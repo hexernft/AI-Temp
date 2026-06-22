@@ -111,9 +111,7 @@ export default function WelcomePage() {
               </div>
             </div>
 
-            <span className="rounded-full bg-[var(--brand-lime)] px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-[var(--brand-ink)]">
-              Guest Care
-            </span>
+
           </div>
 
           <div className="mt-5">

@@ -782,3 +782,93 @@ a {
   font-size-adjust: none;
 }
 
+
+/* =========================================================
+   WelCare typography size adjustment
+   Slightly reduced from previous large setting
+   ========================================================= */
+
+:root {
+  font-size: 16px;
+}
+
+body {
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+
+input,
+select,
+textarea,
+button {
+  font-size: 0.94rem !important;
+}
+
+.text-\[10px\],
+.text-\[11px\] {
+  font-size: 0.72rem !important;
+}
+
+.text-\[0\.65rem\],
+.text-\[0\.68rem\],
+.text-\[0\.7rem\],
+.text-\[0\.72rem\] {
+  font-size: 0.74rem !important;
+}
+
+.text-\[0\.75rem\],
+.text-\[0\.76rem\],
+.text-\[0\.78rem\] {
+  font-size: 0.8rem !important;
+}
+
+.text-\[0\.82rem\],
+.text-\[0\.85rem\],
+.text-\[0\.9rem\] {
+  font-size: 0.9rem !important;
+}
+
+/* =========================================================
+   WelCare typography size adjustment
+   Reduced one more step for cleaner compact UI
+   ========================================================= */
+
+:root {
+  font-size: 15.5px;
+}
+
+body {
+  font-size: 0.94rem;
+  line-height: 1.52;
+}
+
+input,
+select,
+textarea,
+button {
+  font-size: 0.92rem !important;
+}
+
+.text-\[10px\],
+.text-\[11px\] {
+  font-size: 0.68rem !important;
+}
+
+.text-\[0\.65rem\],
+.text-\[0\.68rem\],
+.text-\[0\.7rem\],
+.text-\[0\.72rem\] {
+  font-size: 0.7rem !important;
+}
+
+.text-\[0\.75rem\],
+.text-\[0\.76rem\],
+.text-\[0\.78rem\] {
+  font-size: 0.76rem !important;
+}
+
+.text-\[0\.82rem\],
+.text-\[0\.85rem\],
+.text-\[0\.9rem\] {
+  font-size: 0.86rem !important;
+}
