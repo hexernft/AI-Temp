@@ -896,3 +896,171 @@ h1 {
 }
 
 
+
+/* =========================================================
+   WelCare compact UI refinement
+   Tighter typography, cleaner spacing, more organised layout
+   ========================================================= */
+
+:root {
+  font-size: 15px;
+}
+
+/* Body text: compact but readable */
+body {
+  font-size: 0.92rem;
+  line-height: 1.48;
+}
+
+/* Headings: reduce heavy oversized look */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-display {
+  font-family: "Plus Jakarta Sans", "Aptos Display", "Aptos", "Segoe UI Variable", "Segoe UI", sans-serif !important;
+  font-weight: 750 !important;
+  letter-spacing: -0.045em !important;
+}
+
+/* Reduce very large dashboard/hero display text */
+.text-\[2\.15rem\] {
+  font-size: 1.85rem !important;
+  line-height: 1.08 !important;
+}
+
+.md\:text-\[3rem\] {
+  font-size: 2.35rem !important;
+  line-height: 1.08 !important;
+}
+
+.text-\[2rem\] {
+  font-size: 1.6rem !important;
+}
+
+.text-\[1\.45rem\] {
+  font-size: 1.25rem !important;
+}
+
+.text-\[1\.35rem\] {
+  font-size: 1.18rem !important;
+}
+
+.text-\[1\.12rem\],
+.text-\[1\.05rem\] {
+  font-size: 0.98rem !important;
+}
+
+/* Tighten small UI text */
+.text-\[10px\],
+.text-\[11px\] {
+  font-size: 0.66rem !important;
+}
+
+.text-\[0\.65rem\],
+.text-\[0\.68rem\],
+.text-\[0\.7rem\],
+.text-\[0\.72rem\] {
+  font-size: 0.68rem !important;
+}
+
+.text-\[0\.75rem\],
+.text-\[0\.76rem\],
+.text-\[0\.78rem\],
+.text-\[0\.8rem\] {
+  font-size: 0.74rem !important;
+}
+
+.text-\[0\.82rem\],
+.text-\[0\.84rem\],
+.text-\[0\.85rem\],
+.text-\[0\.86rem\],
+.text-\[0\.9rem\],
+.text-\[0\.96rem\] {
+  font-size: 0.82rem !important;
+}
+
+/* Inputs and buttons should not look bulky */
+input,
+select,
+textarea,
+button {
+  font-size: 0.88rem !important;
+}
+
+/* Reduce oversized buttons/pills */
+button,
+a {
+  line-height: 1.25;
+}
+
+/* Dashboard/card spacing refinement */
+.rounded-\[1\.6rem\] {
+  border-radius: 1.25rem !important;
+}
+
+.rounded-2xl {
+  border-radius: 0.9rem !important;
+}
+
+.p-6 {
+  padding: 1.15rem !important;
+}
+
+.p-5 {
+  padding: 1rem !important;
+}
+
+.p-4 {
+  padding: 0.9rem !important;
+}
+
+.p-3 {
+  padding: 0.75rem !important;
+}
+
+.px-4 {
+  padding-left: 0.9rem !important;
+  padding-right: 0.9rem !important;
+}
+
+.py-2\.5 {
+  padding-top: 0.55rem !important;
+  padding-bottom: 0.55rem !important;
+}
+
+.py-2 {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* Sidebar tighter spacing */
+aside nav,
+.sidebar nav {
+  gap: 0.35rem !important;
+}
+
+aside a,
+aside button {
+  min-height: auto !important;
+}
+
+/* Dashboard hero should feel more balanced */
+section:first-of-type .max-w-3xl {
+  max-width: 42rem !important;
+}
+
+/* Top bar search/buttons compact */
+header input,
+header button,
+header a {
+  font-size: 0.82rem !important;
+}
+
+/* Care pulse cards more organised */
+div[class*="bg-[#10483a]"] {
+  border-radius: 1rem !important;
+}
+
