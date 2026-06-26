@@ -1064,3 +1064,91 @@ div[class*="bg-[#10483a]"] {
   border-radius: 1rem !important;
 }
 
+
+/* =========================================================
+   WelCare sidebar scroll fix
+   Allows all sidebar items to remain accessible
+   ========================================================= */
+
+aside {
+  max-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+}
+
+aside nav {
+  padding-bottom: 1.5rem;
+}
+
+/* Better sidebar scrolling on desktop app shell */
+.app-shell-sidebar,
+[class*="sidebar"] {
+  max-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Keep sidebar content from being clipped */
+.app-shell-sidebar > *,
+[class*="sidebar"] > * {
+  flex-shrink: 0;
+}
+
+/* Webkit scrollbar polish */
+aside::-webkit-scrollbar,
+.app-shell-sidebar::-webkit-scrollbar,
+[class*="sidebar"]::-webkit-scrollbar {
+  width: 6px;
+}
+
+aside::-webkit-scrollbar-thumb,
+.app-shell-sidebar::-webkit-scrollbar-thumb,
+[class*="sidebar"]::-webkit-scrollbar-thumb {
+  background: rgba(15, 70, 56, 0.35);
+  border-radius: 999px;
+}
+
+aside::-webkit-scrollbar-track,
+.app-shell-sidebar::-webkit-scrollbar-track,
+[class*="sidebar"]::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+/* =========================================================
+   WelCare sidebar/mobile nav compact refinement
+   Smaller nav items only
+   ========================================================= */
+
+.sidebar-link {
+  min-height: 2.15rem !important;
+  padding: 0.44rem 0.62rem !important;
+  font-size: 0.72rem !important;
+  border-radius: 0.72rem !important;
+  gap: 0.55rem !important;
+}
+
+.sidebar-link-icon {
+  width: 1.42rem !important;
+  height: 1.42rem !important;
+  min-width: 1.42rem !important;
+  font-size: 0.66rem !important;
+  border-radius: 0.55rem !important;
+}
+
+.mobile-nav-chip {
+  padding: 0.42rem 0.62rem !important;
+  font-size: 0.72rem !important;
+  border-radius: 0.7rem !important;
+}
+
+.app-sidebar nav {
+  padding-top: 0.35rem !important;
+  padding-bottom: 0.75rem !important;
+}
+
+.app-sidebar {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
