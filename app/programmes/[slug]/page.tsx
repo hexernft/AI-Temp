@@ -1,11 +1,36 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 
-export default function WelcomePage() {
+type Programme = {
+  id: string;
+  name: string;
+  slug: string;
+  description: string | null;
+  programme_date: string | null;
+  is_active: boolean;
+};
+
+function formatDate(value: string | null | undefined) {
+  if (!value) return "";
+
+  return new Date(value).toLocaleDateString("en-NG", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
+export default function ProgrammeWelcomePage() {
+  const params = useParams();
+  const slug = typeof params.slug === "string" ? params.slug : "";
   const [loading, setLoading] = useState(false);
+  const [loadingProgramme, setLoadingProgramme] = useState(true);
+  const [programme, setProgramme] = useState<Programme | null>(null);
 
   const [form, setForm] = useState({
     full_name: "",
@@ -22,6 +47,30 @@ export default function WelcomePage() {
     baptized_when: "",
     baptized_where: "",
   });
+
+  useEffect(() => {
+    async function loadProgramme() {
+      if (!slug) return;
+
+      setLoadingProgramme(true);
+
+      const { data, error } = await supabase
+        .from("programmes")
+        .select("id, name, slug, description, programme_date, is_active")
+        .eq("slug", slug)
+        .eq("is_active", true)
+        .maybeSingle();
+
+      if (error) {
+        console.error("Programme form load error:", error);
+      }
+
+      setProgramme(data || null);
+      setLoadingProgramme(false);
+    }
+
+    loadProgramme();
+  }, [slug]);
 
   function updateField(name: string, value: string) {
     setForm((current) => ({
@@ -41,6 +90,9 @@ export default function WelcomePage() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    if (!programme) return;
+
     setLoading(true);
 
     const hasBeenBaptized =
@@ -70,64 +122,96 @@ export default function WelcomePage() {
       interested_baptism: hasBeenBaptized === false,
       status: "new",
       stage: "first_visit",
-      source: "qr_form",
-      programme_id: null,
+      source: "programme_form",
+      programme_id: programme.id,
     });
 
     setLoading(false);
 
     if (error) {
       alert("Sorry, something went wrong. Please try again.");
-      console.error("First timer submit error:", error);
+      console.error("Programme first timer submit error:", error);
       return;
     }
 
     window.location.href = "/thank-you";
   }
 
+  if (loadingProgramme) {
+    return (
+      <main className="public-form-page min-h-screen px-4 py-6">
+        <section className="mx-auto max-w-3xl rounded-2xl border bg-white p-6 text-center shadow-sm">
+          <p className="text-sm font-bold text-slate-500">
+            Loading programme form...
+          </p>
+        </section>
+      </main>
+    );
+  }
+
+  if (!programme) {
+    return (
+      <main className="public-form-page min-h-screen px-4 py-6">
+        <section className="mx-auto max-w-3xl rounded-2xl border bg-white p-6 text-center shadow-sm">
+          <p className="text-sm font-black text-slate-800">
+            Programme form unavailable.
+          </p>
+          <p className="mt-1 text-xs text-slate-500">
+            This programme may be inactive, closed, or no longer available.
+          </p>
+          <Link
+            href="/welcome"
+            className="mt-4 inline-flex rounded-lg bg-slate-950 px-3 py-2 text-[11px] font-black text-white"
+          >
+            Open Regular Form
+          </Link>
+        </section>
+      </main>
+    );
+  }
+
   return (
     <main className="public-form-page min-h-screen px-4 py-6">
       <section className="mx-auto max-w-3xl">
         <div className="public-form-header mb-4 rounded-2xl border p-4 shadow-sm">
-          <div className="flex items-center justify-between gap-3">
-            <div className="flex items-center gap-3">
-              <div className="public-form-logo relative h-10 w-10 overflow-hidden rounded-xl border">
-                <Image
-                  src="/image/welcare-logo.png"
-                  alt="WelCare logo"
-                  fill
-                  sizes="40px"
-                  className="object-contain p-1"
-                  priority
-                />
-              </div>
-
-              <div>
-                <p className="font-display text-sm font-black leading-none tracking-tight">
-                  WelCare
-                </p>
-                <p className="public-form-muted mt-0.5 text-[10px] font-medium">
-                  Welcome form
-                </p>
-              </div>
+          <div className="flex items-center gap-3">
+            <div className="public-form-logo relative h-10 w-10 overflow-hidden rounded-xl border">
+              <Image
+                src="/image/welcare-logo.png"
+                alt="WelCare logo"
+                fill
+                sizes="40px"
+                className="object-contain p-1"
+                priority
+              />
             </div>
 
-
+            <div>
+              <p className="font-display text-sm font-black leading-none tracking-tight">
+                WelCare
+              </p>
+              <p className="public-form-muted mt-0.5 text-[10px] font-medium">
+                Programme welcome form
+              </p>
+            </div>
           </div>
 
           <div className="mt-5">
             <p className="public-form-muted text-[11px] font-bold uppercase tracking-[0.18em]">
-              First Timer
+              Special Programme
             </p>
-
             <h1 className="mt-1 font-display text-[1.8rem] font-black leading-tight tracking-[-0.05em] md:text-[2rem]">
-              We’re glad you worshipped with us today.
+              {programme.name}
             </h1>
-
             <p className="public-form-muted mt-2 max-w-xl text-[0.9rem] leading-6">
-              Kindly fill this short form so we can stay connected with you and
-              support your growth journey.
+              {programme.description ||
+                "Kindly fill this short form so we can stay connected with you after this programme."}
             </p>
+            {programme.programme_date && (
+              <p className="public-form-muted mt-2 text-[0.78rem] font-bold">
+                Programme date: {formatDate(programme.programme_date)}
+              </p>
+            )}
           </div>
         </div>
 
@@ -288,7 +372,6 @@ export default function WelcomePage() {
               <h2 className="font-display text-[1rem] font-black">
                 Baptism information
               </h2>
-
               <p className="public-form-muted mt-0.5 text-[0.78rem] leading-5">
                 This helps us understand your spiritual growth journey better.
               </p>

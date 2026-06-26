@@ -30,9 +30,17 @@ type FirstTimer = {
   status: string;
   stage: string;
   source: string;
+  programme_id: string | null;
   assigned_to: string | null;
   service_date: string;
   created_at: string;
+};
+
+type Programme = {
+  id: string;
+  name: string;
+  slug: string;
+  programme_date: string | null;
 };
 
 type FollowUp = {
@@ -142,6 +150,7 @@ export default function FirstTimerProfilePage() {
   const id = typeof params.id === "string" ? params.id : "";
 
   const [person, setPerson] = useState<FirstTimer | null>(null);
+  const [programme, setProgramme] = useState<Programme | null>(null);
   const [followUps, setFollowUps] = useState<FollowUp[]>([]);
   const [workers, setWorkers] = useState<WorkerProfile[]>([]);
   const [loading, setLoading] = useState(true);
@@ -212,6 +221,21 @@ export default function FirstTimerProfilePage() {
       setStatus(firstTimerData.status);
       setStage(firstTimerData.stage);
       setAssignedTo(firstTimerData.assigned_to || "");
+      setProgramme(null);
+
+      if (firstTimerData.programme_id) {
+        const { data: programmeData, error: programmeError } = await supabase
+          .from("programmes")
+          .select("id, name, slug, programme_date")
+          .eq("id", firstTimerData.programme_id)
+          .maybeSingle();
+
+        if (programmeError) {
+          console.error("Programme load error:", programmeError);
+        }
+
+        setProgramme(programmeData || null);
+      }
 
       const { data: followUpData, error: followUpError } = await supabase
         .from("follow_ups")
@@ -487,6 +511,17 @@ export default function FirstTimerProfilePage() {
                 </p>
 
                 <p className="mt-1 text-[0.82rem] text-slate-500">
+                  Capture source:{" "}
+                  <span className="font-black text-slate-800">
+                    {programme
+                      ? `${programme.name} (${formatDate(
+                          programme.programme_date
+                        )})`
+                      : "Regular service"}
+                  </span>
+                </p>
+
+                <p className="mt-1 text-[0.82rem] text-slate-500">
                   Assigned to{" "}
                   <span className="font-black text-slate-800">
                     {assignedWorker?.full_name ||
@@ -556,6 +591,10 @@ export default function FirstTimerProfilePage() {
                     value={formatLabel(person.how_heard)}
                   />
                   <Detail label="Source" value={formatLabel(person.source)} />
+                  <Detail
+                    label="Programme"
+                    value={programme?.name || "Regular service"}
+                  />
                 </div>
 
                 <div className="mt-3 rounded-xl bg-slate-50 p-3">

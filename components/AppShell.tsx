@@ -10,14 +10,15 @@ type AppShellProps = {
 };
 
 const navItems = [
-  { href: "/dashboard", label: "Dashboard", icon: "⌁" },
+  { href: "/dashboard", label: "Dashboard", icon: "D" },
   { href: "/first-timers", label: "First Timers", icon: "+" },
-  { href: "/workers/my-follow-ups", label: "My Follow-Ups", icon: "✓" },
-  { href: "/foundation-school", label: "Foundation", icon: "◇" },
-  { href: "/baptism", label: "Baptism", icon: "○" },
-  { href: "/reports", label: "Reports", icon: "▣" },
-  { href: "/qr-code", label: "QR Codes", icon: "▦" },
-  { href: "/workers", label: "Workers", icon: "◎" },
+  { href: "/workers/my-follow-ups", label: "My Follow-Ups", icon: "M" },
+  { href: "/foundation-school", label: "Foundation", icon: "F" },
+  { href: "/baptism", label: "Baptism", icon: "B" },
+  { href: "/reports", label: "Reports", icon: "R" },
+  { href: "/programmes", label: "Programmes", icon: "P" },
+  { href: "/qr-code", label: "QR Codes", icon: "Q" },
+  { href: "/workers", label: "Workers", icon: "W" },
 ];
 
 function getPageTitle(pathname: string) {
@@ -29,6 +30,7 @@ function getPageTitle(pathname: string) {
   if (pathname.startsWith("/foundation-school")) return "Foundation School";
   if (pathname.startsWith("/baptism")) return "Baptism";
   if (pathname.startsWith("/reports")) return "Reports";
+  if (pathname.startsWith("/programmes")) return "Programmes";
   if (pathname.startsWith("/qr-code")) return "QR Codes";
   return "WelCare";
 }
@@ -134,7 +136,9 @@ export default function AppShell({ children }: AppShellProps) {
 
             <div className="flex min-w-0 flex-1 items-center justify-end gap-2">
               <div className="top-search hidden max-w-md flex-1 items-center gap-2 rounded-2xl px-3 py-2 xl:flex">
-                <span className="text-[0.86rem] text-[var(--text-faint)]">⌕</span>
+                <span className="text-[0.86rem] text-[var(--text-faint)]">
+                  Search
+                </span>
                 <input
                   aria-label="Search placeholder"
                   className="w-full bg-transparent text-[0.82rem] font-semibold text-[var(--text-soft)] outline-none placeholder:text-[var(--text-faint)]"
