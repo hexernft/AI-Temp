@@ -101,25 +101,6 @@ export default function AppShell({ children }: AppShellProps) {
             );
           })}
         </nav>
-
-        <div className="space-y-3 border-t border-white/10 p-3">
-          <div className="rounded-[1.4rem] border border-white/10 bg-white/[0.055] p-3">
-            <p className="text-[0.68rem] font-black uppercase tracking-[0.2em] text-slate-500">
-              Quick Access
-            </p>
-            <p className="mt-1 text-[0.8rem] leading-5 text-slate-400">
-              Open the public form or continue follow-up work.
-            </p>
-          </div>
-
-          <Link href="/welcome" className="action-link-primary">
-            Open Public Form
-          </Link>
-
-          <button onClick={handleLogout} className="action-link-secondary w-full">
-            Logout
-          </button>
-        </div>
       </aside>
 
       <div className="app-content lg:pl-[276px]">
@@ -217,4 +198,5 @@ export default function AppShell({ children }: AppShellProps) {
     </main>
   );
 }
+
 
