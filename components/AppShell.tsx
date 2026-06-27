@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
 import { supabase } from "@/lib/supabase";
 
 type AppShellProps = {
@@ -12,6 +13,7 @@ type AppShellProps = {
 const navItems = [
   { href: "/dashboard", label: "Dashboard", icon: "D" },
   { href: "/first-timers", label: "First Timers", icon: "+" },
+  { href: "/evangelism", label: "Evangelism", icon: "E" },
   { href: "/workers/my-follow-ups", label: "My Follow-Ups", icon: "M" },
   { href: "/foundation-school", label: "Foundation", icon: "F" },
   { href: "/baptism", label: "Baptism", icon: "B" },
@@ -25,6 +27,7 @@ function getPageTitle(pathname: string) {
   if (pathname === "/dashboard") return "Dashboard";
   if (pathname.startsWith("/first-timers/")) return "First Timer Profile";
   if (pathname.startsWith("/first-timers")) return "First Timers";
+  if (pathname.startsWith("/evangelism")) return "Evangelism";
   if (pathname.startsWith("/workers/my-follow-ups")) return "My Follow-Ups";
   if (pathname.startsWith("/workers")) return "Workers";
   if (pathname.startsWith("/foundation-school")) return "Foundation School";
@@ -38,6 +41,7 @@ function getPageTitle(pathname: string) {
 export default function AppShell({ children }: AppShellProps) {
   const router = useRouter();
   const pathname = usePathname();
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   async function handleLogout() {
     await supabase.auth.signOut();
@@ -56,9 +60,25 @@ export default function AppShell({ children }: AppShellProps) {
 
   return (
     <main className="app-shell min-h-screen">
-      <aside className="app-sidebar fixed left-0 top-0 z-50 hidden h-screen w-[276px] lg:flex lg:flex-col">
-        <div className="px-4 py-4">
-          <Link href="/dashboard" className="brand-card flex items-center gap-3">
+      <aside
+        className={`app-sidebar fixed left-0 top-0 z-50 hidden h-screen transition-[width] duration-200 lg:flex lg:flex-col ${
+          sidebarCollapsed ? "w-[84px]" : "w-[276px]"
+        }`}
+      >
+        <div className={`px-4 py-4 ${sidebarCollapsed ? "px-3" : ""}`}>
+          <div
+            className={`flex items-center gap-2 ${
+              sidebarCollapsed ? "flex-col justify-center" : "justify-between"
+            }`}
+          >
+            <Link
+              href="/dashboard"
+              className={`brand-card flex min-w-0 items-center gap-3 ${
+                sidebarCollapsed ? "justify-center" : ""
+              }`}
+              title={sidebarCollapsed ? "WelCare" : undefined}
+              aria-label={sidebarCollapsed ? "WelCare dashboard" : undefined}
+            >
             <div className="relative h-11 w-11 overflow-hidden rounded-2xl border border-white/10 bg-white shadow-lg shadow-blue-500/10">
               <Image
                 src="/image/welcare-logo.png"
@@ -70,7 +90,7 @@ export default function AppShell({ children }: AppShellProps) {
               />
             </div>
 
-            <div>
+            <div className={sidebarCollapsed ? "hidden" : ""}>
               <p className="font-display text-[1.08rem] font-black leading-none tracking-tight text-white">
                 WelCare
               </p>
@@ -78,11 +98,30 @@ export default function AppShell({ children }: AppShellProps) {
                 Church care system
               </p>
             </div>
-          </Link>
+            </Link>
+
+            <button
+              type="button"
+              onClick={() => setSidebarCollapsed((current) => !current)}
+              className="sidebar-collapse-btn"
+              aria-label={sidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+              title={sidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+            >
+              {sidebarCollapsed ? ">" : "<"}
+            </button>
+          </div>
         </div>
 
-        <nav className="flex-1 space-y-1 px-3 py-2">
-          <p className="px-3 pb-2 text-[0.66rem] font-black uppercase tracking-[0.22em] text-slate-500">
+        <nav
+          className={`flex-1 space-y-1 py-2 ${
+            sidebarCollapsed ? "px-3" : "px-3"
+          }`}
+        >
+          <p
+            className={`px-3 pb-2 text-[0.66rem] font-black uppercase tracking-[0.22em] text-slate-500 ${
+              sidebarCollapsed ? "hidden" : ""
+            }`}
+          >
             Workspace
           </p>
 
@@ -93,17 +132,27 @@ export default function AppShell({ children }: AppShellProps) {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`sidebar-link group ${active ? "sidebar-link-active" : ""}`}
+                title={sidebarCollapsed ? item.label : undefined}
+                aria-label={sidebarCollapsed ? item.label : undefined}
+                className={`sidebar-link group ${
+                  sidebarCollapsed ? "justify-center" : ""
+                } ${active ? "sidebar-link-active" : ""}`}
               >
                 <span className="sidebar-link-icon">{item.icon}</span>
-                <span>{item.label}</span>
+                <span className={sidebarCollapsed ? "hidden" : ""}>
+                  {item.label}
+                </span>
               </Link>
             );
           })}
         </nav>
       </aside>
 
-      <div className="app-content lg:pl-[276px]">
+      <div
+        className={`app-content transition-[padding] duration-200 ${
+          sidebarCollapsed ? "lg:pl-[84px]" : "lg:pl-[276px]"
+        }`}
+      >
         <header className="app-topbar sticky top-0 z-40">
           <div className="hidden items-center justify-between gap-4 px-5 py-3 lg:flex">
             <div>
